@@ -84,7 +84,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
     HomePage,
     AboutPage,
     ContactPage,
-  
+
   PeoplePage,
    SettingsPage,
     LoginPage,

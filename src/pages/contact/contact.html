@@ -1,17 +1,53 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      slider
+    multiple imges
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content pdding>
 
+<ion-content padding>
+  <div class="login-box-section">
+    <div class="login-box">
+
+        <form (ngSubmit)="submitDetails(marriageForm.value)" [formGroup]="marriageForm">
+          <ion-list class="login-user-info">
+            <span><h4>uplode other photo</h4></span>
+            <button item-end ion-button (click)="getPhoto()"><ion-icon name="add"></ion-icon></button> 
+
+              <ion-row class="gender-box">
+                  <ion-col  *ngFor="let pics of allImages" col-4>
+                    <div class="document-img-box dotted-border"  (click)="getPhoto('pics')">
+                      <img src="{{pics}}"/>
+                  </div>
+                  </ion-col>
+               </ion-row>
+
+      <ion-input formControlName="otherpics" [(ngModel)]="otherpics" type="text" hidden></ion-input>
+
+          
+          </ion-list>
+          <ion-row>
+            <ion-col>
+              <button ion-button start round center class="login-btn" (click)="goBack()">Prev</button>
+            </ion-col>
+            <ion-col>
+              <button ion-button round center class="login-btn">Next</button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </div>
+    </div>
+
+</ion-content>
+
+  <!--
   <button ion-button round center (click)="imgpicker()"> get img</button>
   <ion-list *ngFor="let img of photos">
     <ion-item>
       <img src="{{img}}"/>
     </ion-item>
   </ion-list>
-</ion-content>
+  -->
+

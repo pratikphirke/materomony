@@ -11,5 +11,15 @@
 </ion-header>
 
 <ion-content padding>
+  <button ion-button round center (click)="imgpicker()"> get img</button>
 
+
+  <ion-row class="gender-box">
+    <ion-col *ngFor="let img of photos" col-4>
+      <div class="document-img-box dotted-border"  (click)="imgpicker()">
+        <img src="{{img}}"/>
+    </div>
+    </ion-col>
+ </ion-row>
+  
 </ion-content>
