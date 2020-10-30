@@ -1,0 +1,169 @@
+<!--
+<ion-header>
+  <ion-navbar>
+    <ion-title>business-step1</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+
+
+<ion-content padding>
+
+  <div class="login-box-section">
+    <div class="login-box">
+     <!--   <div class="logo-box">
+            <img src="assets/imgs/logo-1.jpg">
+        </div>
+-->
+        <form [formGroup]="businessForm" (ngSubmit)="submitDetails(businessForm.value)">
+          <ion-list class="login-user-info">
+            <span><h3> Bussiness Details </h3></span>
+          
+          <ion-row class="gender-box">
+            <span><h4> Bussiness logo </h4></span>
+            <ion-col (click)="getPhoto('selfie')" *ngIf="selfie" col-4>
+                <div class="document-img-box">
+                    <img [src]="selfie">
+                </div>
+            </ion-col>
+            <ion-col *ngIf="!selfie" (click)="getPhoto('selfie')" col-4>
+                <div class="document-img-box dotted-border">
+                    <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <ion-input placeholder="Bussiness logo"  formControlName="bussinesslogo" [(ngModel)]="selfie" type="text" hidden></ion-input>
+
+       <div no-lines
+            *ngIf="businessForm.get('bussinesslogo').hasError('required') && businessForm.get('bussinesslogo').touched">
+            <div class="error">
+              Bussiness logo is required
+            </div>
+        </div>
+        <span><h4> Other pics </h4></span>
+              <ion-row class="gender-box">
+             
+                <ion-col>
+                  <ion-col (click)="getPhoto('otherpic1')" *ngIf="otherpic1" col-4>
+                      <div class="document-img-box">
+                          <img [src]="otherpic1">
+                      </div>
+                  </ion-col>
+                  <ion-col *ngIf="!otherpic1" (click)="getPhoto('otherpic1')" col-4>
+                      <div class="document-img-box dotted-border">
+                          <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
+                      </div>
+                  </ion-col>
+                </ion-col>
+  
+                <ion-col>
+                  <ion-col (click)="getPhoto('otherpic2')" *ngIf="otherpic2" col-4>
+                      <div class="document-img-box">
+                          <img [src]="otherpic2">
+                      </div>
+                  </ion-col>
+                  <ion-col *ngIf="!otherpic2" (click)="getPhoto('otherpic2')" col-4>
+                      <div class="document-img-box dotted-border">
+                          <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
+                      </div>
+                  </ion-col>
+                </ion-col>
+  
+                <ion-col>
+                  <ion-col (click)="getPhoto('otherpic3')" *ngIf="otherpic3" col-4>
+                      <div class="document-img-box">
+                          <img [src]="otherpic3">
+                      </div>
+                  </ion-col>
+                  <ion-col *ngIf="!otherpic3" (click)="getPhoto('otherpic3')" col-4>
+                      <div class="document-img-box dotted-border">
+                          <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
+                      </div>
+                  </ion-col>
+                </ion-col>
+  
+                <ion-col>
+                  <ion-col (click)="getPhoto('otherpic4')" *ngIf="otherpic4" col-4>
+                      <div class="document-img-box">
+                          <img [src]="otherpic4">
+                      </div>
+                  </ion-col>
+                  <ion-col *ngIf="!otherpic4" (click)="getPhoto('otherpic4')" col-4>
+                      <div class="document-img-box dotted-border">
+                          <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
+                      </div>
+                  </ion-col>
+                </ion-col>
+              </ion-row>
+  
+              <ion-input formControlName="otherpic1" [(ngModel)]="otherpic1" type="text" hidden></ion-input>
+              <ion-input formControlName="otherpic2" [(ngModel)]="otherpic2" type="text" hidden></ion-input>
+              <ion-input formControlName="otherpic3" [(ngModel)]="otherpic3" type="text" hidden></ion-input>
+              <ion-input formControlName="otherpic4" [(ngModel)]="otherpic4" type="text" hidden></ion-input>
+              <div no-lines
+                  *ngIf="businessForm.get('otherpic1').hasError('required') && businessForm.get('otherpic1').touched &&
+                  businessForm.get('otherpic2').hasError('required') && businessForm.get('otherpic2').touched &&
+                  businessForm.get('otherpic3').hasError('required') && businessForm.get('otherpic3').touched &&
+                  businessForm.get('otherpic4').hasError('required') && businessForm.get('otherpic4').touched">
+                  <div class="error">
+                    Other Photos is required
+                  </div>
+              </div>
+              <ion-item>
+                <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                </ion-label>
+                <ion-input type="text" placeholder="Company Name"  formControlName="company"></ion-input>
+            </ion-item>
+            <div no-lines
+            *ngIf="businessForm.get('company').hasError('required') && businessForm.get('company').touched">
+                <div class="error">
+                  Company Name is required
+                </div>
+            </div>
+
+            <ion-item>
+                <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                </ion-label>
+                <ion-input type="text" placeholder="Office Address"  formControlName="office_address"></ion-input>
+            </ion-item>
+            <div no-lines
+            *ngIf="businessForm.get('company').hasError('required') && businessForm.get('company').touched">
+                <div class="error">
+                  Company Name is required
+                </div>
+            </div>
+            
+            <ion-item>
+                <ion-label>
+                    <ion-icon item-left name="mail"></ion-icon>
+                </ion-label>
+                <ion-input type="email" placeholder="Email Id"  formControlName="email"></ion-input>
+            </ion-item>
+            <div no-lines
+                 *ngIf="(businessForm.get('email').hasError('pattern') ||businessForm.get('email').hasError('required') ) && businessForm.get('email').touched">
+            <div class="error"
+                  *ngIf="businessForm.get('email').hasError('required') && businessForm.get('email').touched">
+              Please Enter  Email ID
+            </div>
+            <div class="error" *ngIf="businessForm.get('email').hasError('pattern') && businessForm.get('email').touched">
+               Invalid Email-id
+            </div>
+          </div>
+          </ion-list>
+
+          <ion-row>
+            <ion-col>
+              <button ion-button start round center (click)="goBack()" class="login-btn">Prev</button>
+            </ion-col>
+            <ion-col>
+              <button ion-button round center type="submit" class="login-btn">Next</button>
+            </ion-col>
+          </ion-row>
+        <!--<button ion-button round center class="login-btn" type="submit">Next</button>-->
+      </form>
+    </div>
+</div>
+</ion-content>

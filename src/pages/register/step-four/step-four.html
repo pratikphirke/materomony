@@ -1,0 +1,162 @@
+<!--<ion-header>
+  <ion-navbar>
+    <ion-title>Step Four</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+<ion-content padding>
+
+
+  <div class="login-box-section">
+      <div class="login-box">
+        <!--  <div class="logo-box">
+              <img src="assets/imgs/logo-1.jpg">
+          </div>
+-->
+          <form (ngSubmit)="Register_StepFour(register.value)" [formGroup]="register">
+          <ion-list class="login-user-info">
+
+
+            <ion-item>
+              <ion-label>
+                  <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+              </ion-label>
+              <ion-select interface="popover" placeholder="Highest Education" formControlName="higheducation">
+                  <ion-option value="primary">Primary</ion-option>
+                  <ion-option value="secondary">Secondary</ion-option>
+                  <ion-option value="degree">Degree/Graduate</ion-option>
+                  <ion-option value="masters">Masters/Post Graduate</ion-option>
+              </ion-select>
+            </ion-item>
+            <div no-lines *ngIf="register.get('higheducation').hasError('required') && register.get('higheducation').touched">
+            <div class="error">
+              Select Highest Education
+            </div>
+            </div>
+
+
+
+        <ion-item>
+        <ion-label>
+          <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+        </ion-label>
+        <ion-select interface="popover" placeholder="Annual Income" formControlName="annual_income">
+          <ion-option value="0-2lac">0-2lac</ion-option>
+          <ion-option value="02-04lac">2-4lac</ion-option>
+          <ion-option value="04-06lac">4-6lac</ion-option>
+          <ion-option value="06-08lac">6-8lac</ion-option>
+          <ion-option value="08-above">8-Above</ion-option>
+        </ion-select>
+        </ion-item>
+        <div no-lines *ngIf="register.get('annual_income').hasError('required') && register.get('annual_income').touched">
+        <div class="error">
+        Select Annual Income
+        </div>
+      </div>
+
+
+        
+        <ion-item><!-- class="langdrop"-->
+          <ion-label>
+              <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+          </ion-label>
+        <!--  <ion-input type="text"  placeholder="{{SelecteHobby}}" [(ngModel)]= "SelecteHobby" 
+           formControlName="hobby" required multiple="true">
+          </ion-input>
+             -->
+         <ion-select [(ngModel)]="SelecteHobby" formControlName="hobby" placeholder="Select Hobby"  multiple="true">
+            <ion-option  *ngFor="let hobby of listHobby">{{hobby}}</ion-option>
+            </ion-select>
+            You Selected = {{SelecteHobby}}
+              <button item-end ion-button (click)="addHobby()"><ion-icon name="add"></ion-icon></button> 
+          </ion-item>
+          <div no-lines *ngIf="register.get('hobby').hasError('required') && register.get('hobby').touched">
+            <div class="error">
+              Enter Your Hobby
+            </div>
+          </div>
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+            </ion-label>
+            <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status" required>
+              
+                <ion-option value="UnMarried">UnMarried				
+                </ion-option>
+                <ion-option value="Divorced">Divorced or widowed
+                </ion-option>
+                <ion-option value="Married">Married				
+                </ion-option>
+                <ion-option value="NeverMarried">Never Married				
+                </ion-option>
+            </ion-select>
+          </ion-item>
+          <div no-lines *ngIf="register.get('marital_status').hasError('required') && register.get('marital_status').touched">
+          <div class="error">
+            Select Marital Status
+          </div>
+        </div>
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+            </ion-label>
+            <ion-select interface="popover" placeholder="Profession" formControlName="profession">
+                <ion-option value="Job">Job</ion-option>
+              <!--  <ion-option value="Unemployed">Unemployed</ion-option>-->
+                <ion-option value="Business">Business</ion-option>
+            </ion-select>
+          </ion-item>
+          <div no-lines *ngIf="register.get('profession').hasError('required') && register.get('profession').touched">
+            <div class="error">
+              Select Profession
+            </div>
+          </div>
+
+
+    
+    
+<!--
+              <input style="float: left;margin: 3px 8px 0px 0px;" type="checkbox" value='tearm'
+              formControlName="tearms">
+            <ion-label style="margin: 0px 8px 13px 44px;">I Accept Tearms And Conditions</ion-label>
+            <ion-item no-lines *ngIf="tearmError">
+              <div class="error">
+                Please check  Condition
+              </div>
+            </ion-item>
+          </ion-list>
+          <div formControlName="status" radio-group>
+            <ion-label>status</ion-label>
+            <ion-item>
+              <ion-label>Married</ion-label>
+              <ion-radio value="Married"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Unmarried</ion-label>
+              <ion-radio value="Unmarried"></ion-radio>
+            </ion-item>
+          </div>
+          <ion-item no-lines *ngIf="register.get('status').hasError('required') && register.get('status').touched">
+            <div class="error">
+              *Select status
+          </ion-item>
+-->
+            </ion-list>
+          
+            <ion-row>
+              <ion-col>
+                <button ion-button start round center (click)="goBack()" class="login-btn">Prev</button>
+              </ion-col>
+              <ion-col>
+                <button ion-button round center type="submit" class="login-btn">Next</button>
+              </ion-col>
+            </ion-row>
+          <!--<button ion-button round center class="login-btn" type="submit">Next</button>-->
+        </form>
+      </div>
+  </div>
+
+
+</ion-content>

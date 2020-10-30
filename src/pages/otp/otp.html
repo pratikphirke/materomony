@@ -1,0 +1,90 @@
+<!--
+  Generated template for the OtpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>otp</ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content padding>
+
+
+
+  
+  <div  class="login-box-section">
+    <span *ngIf="email; else elseBlock ">
+    <div class="login-box">
+        <div class="logo-box">
+
+            <img src="assets/imgs/logo-1.jpg">
+
+        </div>
+
+        <form [formGroup]="otpForm" (ngSubmit)="verifyLoginOtp(otpForm.value)">
+          <ion-list class="login-user-info">
+              <ion-item>
+                  <ion-label>
+
+                      <ion-icon item-left ios="ios-lock" md="md-lock"></ion-icon>
+
+                  </ion-label>
+                  <ion-input type="number" placeholder="Enter login OTP"  formControlName="otp"></ion-input>
+              </ion-item>
+
+              <!-- <ion-item>
+                  <ion-label>
+                      <ion-icon item-left name="mail"></ion-icon>
+                  </ion-label>
+                  <ion-input type="password" placeholder="Username"></ion-input>
+              </ion-item> -->
+          </ion-list>
+
+
+
+        <button ion-button round center class="login-btn">OTP</button>
+      </form>
+    </div>
+  </span>
+</div>
+
+<ng-template #elseBlock>
+<div class="login-box-section">
+  <div class="login-box">
+      <div class="logo-box">
+
+          <img src="assets/imgs/logo-1.jpg">
+
+      </div>
+
+      <form [formGroup]="otpForm" (ngSubmit)="verifyOtp(otpForm.value)">
+        <ion-list class="login-user-info">
+            <ion-item>
+                <ion-label>
+
+                    <ion-icon item-left ios="ios-lock" md="md-lock"></ion-icon>
+
+                </ion-label>
+                <ion-input type="number" placeholder="Enter signup OTP"  formControlName="otp"></ion-input>
+            </ion-item>
+
+            <!-- <ion-item>
+                <ion-label>
+                    <ion-icon item-left name="mail"></ion-icon>
+                </ion-label>
+                <ion-input type="password" placeholder="Username"></ion-input>
+            </ion-item> -->
+        </ion-list>
+
+
+
+          <button ion-button round center class="login-btn">OTP</button>
+      </form>
+      </div>
+  </div>
+</ng-template>
+
+</ion-content>

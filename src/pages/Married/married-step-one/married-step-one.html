@@ -1,0 +1,124 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Married Register Step One</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="login-box-section">
+    <div class="login-box">
+  <!--  <div class="logo-box">
+            <img src="assets/imgs/logo-1.jpg">
+        </div>
+       
+    -->
+        <form (ngSubmit)="marrageRegister_StepOne(register.value)" [formGroup]="register">
+          <ion-list class="login-user-info">
+            
+            <div class="menuLogo">
+              <img [src]="url">
+              <input type="file"  formControlName="profilepic" id="inputFileId" class="inputfile" (change)="UploadImage($event)" >
+             <label for="inputFileId" class="upload">
+              <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
+            </label>
+          </div>
+        <ion-item no-lines
+         *ngIf="register.get('profilepic').hasError('required') && register.get('profilepic').touched">
+            <div class="error">
+              profile pic is required
+            </div>
+         </ion-item>
+
+             <!-- 
+  <div class="menuLogo ">
+<img  [src]="url" />
+<ion-icon name="camera" (click)="UploadImage()" style="color:#fff !important;" class="upload-img">
+</ion-icon>
+</div>
+
+ <ion-item>
+      <ion-label>
+          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+      </ion-label>
+      <ion-input type="text"  placeholder="upload Other pic" formControlName="otherpics" required></ion-input>
+    </ion-item>
+    <ion-item no-lines
+          *ngIf="register.get('otherpics').hasError('required') && register.get('otherpics').touched">
+    <div class="error">
+      other pics is required
+    </div>
+</ion-item>
+        -->
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  placeholder="Mother Name" formControlName="mothername" required></ion-input>
+          </ion-item>
+          <ion-item no-lines
+                *ngIf="register.get('mothername').hasError('required') && register.get('mothername').touched">
+          <div class="error">
+            Mother Name is required
+          </div>
+          </ion-item>
+                
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="number"  placeholder="Father Mobile No" formControlName="fathermobileno" required></ion-input>
+          </ion-item>
+          <ion-item no-lines
+          *ngIf="( register.get('fathermobileno').hasError('minlength') || register.get('fathermobileno').hasError('pattern') ||register.get('fathermobileno').hasError('required') ) && register.get('fathermobileno').touched">
+          <div class="error"
+            *ngIf="register.get('fathermobileno').hasError('required') && register.get('fathermobileno').touched">
+            Please mobile no
+          </div>
+          <div class="error"
+            *ngIf="register.get('fathermobileno').hasError('pattern') && register.get('fathermobileno').touched">
+            mobile No invalid
+          </div>
+          </ion-item>
+
+                  
+            <ion-item>
+              <ion-label>
+                  <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+              </ion-label>
+              <ion-select interface="popover" placeholder="Father Occupasion" formControlName="fatheroccupasion">
+                  <ion-option value="PE">Private emloye</ion-option>
+                  <ion-option value="Bu">Bussiness</ion-option>
+                  <ion-option value="O">Other</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item no-lines *ngIf="register.get('fatheroccupasion').hasError('required') && register.get('fatheroccupasion').touched">
+            <div class="error">
+              Select Father Occupasion
+            </div>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                  <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+              </ion-label>
+              <ion-select interface="popover" placeholder="Mother Occupasion" formControlName="motheroccupasion">
+                  <ion-option value="PE">Private emloye</ion-option>
+                  <ion-option value="Bu">Bussiness</ion-option>
+                  <ion-option value="O">Other</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item no-lines *ngIf="register.get('motheroccupasion').hasError('required') && register.get('motheroccupasion').touched">
+            <div class="error">
+              Select Mother Occupasion
+            </div>
+            </ion-item>
+
+
+      </ion-list> 
+        <button ion-button round center class="login-btn" type="submit">NEXT</button>
+    </form>
+</div>
+</div>
+
+</ion-content>

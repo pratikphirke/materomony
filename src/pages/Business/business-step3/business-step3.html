@@ -1,0 +1,89 @@
+<!--
+ <ion-header>
+  <ion-navbar>
+    <ion-title>business-step3</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+
+
+<ion-content padding>
+
+  <div class="login-box-section">
+    <div class="login-box">
+       <!-- <div class="logo-box">
+            <img src="assets/imgs/logo-1.jpg">
+        </div>
+-->
+        <form [formGroup]="businessForm" (ngSubmit)="submitDetails(businessForm.value)">
+          <ion-list class="login-user-info">
+              
+              <ion-item>
+                <ion-label>
+                    <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                </ion-label>
+                <ion-input type="text" placeholder="About" formControlName="about"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                    <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                </ion-label>
+                <ion-select interface="popover" placeholder="Annual Turnover"  formControlName="turnover">
+                  <ion-option value="In crore">In Crore</ion-option>
+                  <ion-option value="In Lac">In Lac</ion-option>
+                    <ion-option value="In Thousand">In Thousand</ion-option>
+              </ion-select>
+              </ion-item>
+              <div no-lines *ngIf="businessForm.get('turnover').hasError('required') && businessForm.get('turnover').touched">
+                <div class="error">
+                  Select turnover
+                </div>
+              </div>
+           
+               <span><h4>  Social Media Link</h4></span>  
+             
+              
+              <ion-item>
+                <ion-label>
+                    <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                </ion-label>
+                <ion-input type="text" placeholder="website"  formControlName="website"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                    <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                </ion-label>
+                <ion-input type="text" placeholder="LinkedIn Profile Url"  formControlName="linkedin"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                    <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                </ion-label>
+                <ion-input type="text" placeholder="Facebook Profile Url"  formControlName="facebook"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                    <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                </ion-label>
+                <ion-input type="text" placeholder="Instagram Profile Url"  formControlName="instagram"></ion-input>
+              </ion-item>
+
+          </ion-list>
+
+          <ion-row>
+            <ion-col>
+              <button ion-button start round center (click)="goBack()" class="login-btn">Prev</button>
+            </ion-col>
+            <ion-col>
+              <button ion-button round center type="submit" class="login-btn">Next</button>
+            </ion-col>
+          </ion-row>
+        <!--<button ion-button round center class="login-btn" type="submit">Next</button>-->
+      </form>
+    </div>
+</div>
+</ion-content>

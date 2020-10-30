@@ -1,0 +1,181 @@
+<!--<ion-header>
+  <ion-navbar>
+    <ion-title>Divorse Register Step2</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+<ion-content padding>
+  <div class="login-box-section">
+    <div class="login-box">
+   <!-- <div class="logo-box">
+            <img src="assets/imgs/logo-1.jpg">
+        </div>
+-->
+        <form (ngSubmit)="Register_Step2(register.value)" [formGroup]="register">
+          <ion-list class="login-user-info">
+ 
+
+            <ion-item>
+              <ion-label>
+                  <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+              </ion-label>
+          
+        
+              <ion-select interface="popover" placeholder="No Of Brothers" formControlName="noofBrothers"
+                   [(ngModel)] ="Noofbrothers" (ionChange)="onSelectBrother($event)">
+                   <ion-option   *ngFor="let bro of Brothers" [value]="bro">{{bro.name}}</ion-option>
+              </ion-select>
+           
+            </ion-item>
+            <div no-lines *ngIf="register.get('noofBrothers').hasError('required') && register.get('noofBrothers').touched">
+            <div class="error">
+            Select No Of Brothers
+            </div>
+          </div>
+
+            <ion-item>
+              <ion-label>
+                  <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+              </ion-label>
+          
+        
+              <ion-select interface="popover" placeholder="No of Sister" formControlName="noofSister"
+                  [(ngModel)] ="noofSister" (ionChange)="onSelectSister($event)">
+                 <ion-option   *ngFor="let sis of Sisters" [value]="sis">{{sis.name}}</ion-option>
+              </ion-select>
+           
+            </ion-item>
+            <div no-lines *ngIf="register.get('noofSister').hasError('required') && register.get('noofSister').touched">
+            <div class="error">
+              select No Of Sisters You Have
+            </div>
+            </div>
+            <!--
+            <div formControlName="brothers" (ionChange)="haveBrothers($event)" radio-group>
+              <p>Having Brothers</p>
+              <ion-row>
+                <ion-col>
+                  <span>YES</span>
+                  <ion-radio value="Yes">Yes</ion-radio>
+                </ion-col>
+                <ion-col>
+                  <ion-col>
+                    <span>No</span>
+                    <ion-radio value="No">No</ion-radio>
+                  </ion-col>
+                </ion-col>
+              </ion-row>           
+            </div>
+            <div formControlName="sisters" (ionChange)="haveSisters($event)" radio-group>
+              <p>Having Sisters</p>
+              <ion-row>
+                <ion-col>
+                  <span>YES</span>
+                  <ion-radio value="Yes">Yes</ion-radio>
+                </ion-col>
+                <ion-col>
+                  <ion-col>
+                    <span>No</span>
+                    <ion-radio value="No">No</ion-radio>
+                  </ion-col>
+                </ion-col>
+              </ion-row>           
+            </div>
+            -->
+            <!--
+            <ion-item>
+              <ion-label>
+                <ion-input type="text"  placeholder="Have a Brother" readonly></ion-input>
+              </ion-label>
+              <ion-checkbox [(ngModel)]="chbrother"
+                  formControlName="checkbrother" (ionChange)="checkBrother()">
+              </ion-checkbox>
+            </ion-item>
+
+            <ion-item>    
+              <ion-label>
+                   <ion-input type="text"  placeholder="Have a Sister" readonly></ion-input>
+               </ion-label>
+                  <ion-checkbox [(ngModel)]="chsister" 
+                               formControlName="checksister" (ionChange)="checkSister()">
+                 </ion-checkbox>
+                </ion-item>
+                -->
+                <div formControlName="manglik" radio-group >
+                  <p>Manglik</p>
+                  <ion-row>
+                    <ion-col>
+                      <span>YES</span>
+                      <ion-radio value="Y">Yes</ion-radio>
+                    </ion-col>
+                    <ion-col>
+                      <ion-col>
+                        <span>No</span>
+                        <ion-radio value="N">No</ion-radio>
+                      </ion-col>
+                    </ion-col>
+                  </ion-row>           
+                </div>
+        <!--  <ion-col col-12>
+            <ion-label>Manglik</ion-label>
+            <ion-list  formControlName="manglik" radio-group class="payment-redio">
+              <ion-item>
+                <ion-label>Yes</ion-label>
+                <ion-radio value="Y" checked></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio value="N"></ion-radio>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-item no-lines *ngIf="register.get('manglik').hasError('required') && register.get('manglik').touched">
+            <div class="error">
+              Select Manglik status
+            </div>
+          </ion-item>
+-->
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  placeholder="Kul Devi" formControlName="kuldevi" required></ion-input>
+          </ion-item>
+          <div no-lines
+          *ngIf="register.get('kuldevi').hasError('required') && register.get('kuldevi').touched">
+          <div class="error">
+            Kul Devi is required
+          </div>
+          </div>
+
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  placeholder="Gotra" formControlName="gotra" required></ion-input>
+          </ion-item>
+          <div no-lines
+          *ngIf="register.get('gotra').hasError('required') && register.get('gotra').touched">
+          <div class="error">
+            Gotra is required
+          </div>
+          </div>
+
+
+      </ion-list> 
+      <ion-row>
+        <ion-col>
+          <button ion-button start round center (click)="goBack()" class="login-btn">Prev</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button round center type="submit" class="login-btn">Next</button>
+        </ion-col>
+      </ion-row>
+    <!--<button ion-button round center class="login-btn" type="submit">Next</button>-->
+    </form>
+</div>
+</div>
+
+</ion-content>

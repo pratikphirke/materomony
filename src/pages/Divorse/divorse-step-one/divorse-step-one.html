@@ -1,0 +1,214 @@
+<!--
+<ion-header>
+  <ion-navbar>
+    <ion-title>Divorse Register Step One</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+
+
+<ion-content padding>
+  <div class="login-box-section">
+    <div class="login-box">
+   
+
+        <form (ngSubmit)="DivorseRegister_Step1(register.value)" [formGroup]="register">
+          <ion-list class="login-user-info">
+    <!--        
+         <ion-row>
+             <img class="img" [src]="url">
+           </ion-row>
+      <ion-row> 
+        <input type="file" name="file" id="profilepic" (change)="UploadprofileImage($event)" class="inputfile" >
+            <label for="profilepic" class="upload">
+          <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
+        </label>
+      </ion-row>
+         <ion-row>
+             <img class="img" [src]="url">
+           </ion-row>
+      <ion-row> 
+        <input type="file" name="file" id="otherpic" class="inputfile" (change)="UploadOtherImage($event)" >
+            <label for="otherpic" class="upload">
+          <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
+        </label>
+      </ion-row>
+    
+      <ion-item>
+          <ion-label>
+              <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+          </ion-label>
+          <ion-input type="text"  placeholder="Upload profile pic" formControlName="profilepic" required></ion-input>
+    </ion-item>
+        <ion-item no-lines
+              *ngIf="register.get('profilepic').hasError('required') && register.get('profilepic').touched">
+        <div class="error">
+          profile pic is required
+        </div>
+  </ion-item>
+-->
+            <span><h4>Divorce / widow Registration</h4></span>
+            <ion-row class="gender-box">
+
+              <ion-col>
+                <ion-col (click)="getPhoto('otherpic1')" *ngIf="otherpic1" col-4>
+                    <div class="document-img-box">
+                        <img [src]="otherpic1">
+                    </div>
+                </ion-col>
+                <ion-col *ngIf="!otherpic1" (click)="getPhoto('otherpic1')" col-4>
+                    <div class="document-img-box dotted-border">
+                        <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
+                    </div>
+                </ion-col>
+              </ion-col>
+
+              <ion-col>
+                <ion-col (click)="getPhoto('otherpic2')" *ngIf="otherpic2" col-4>
+                    <div class="document-img-box">
+                        <img [src]="otherpic2">
+                    </div>
+                </ion-col>
+                <ion-col *ngIf="!otherpic2" (click)="getPhoto('otherpic2')" col-4>
+                    <div class="document-img-box dotted-border">
+                        <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
+                    </div>
+                </ion-col>
+              </ion-col>
+
+              <ion-col>
+                <ion-col (click)="getPhoto('otherpic3')" *ngIf="otherpic3" col-4>
+                    <div class="document-img-box">
+                        <img [src]="otherpic3">
+                    </div>
+                </ion-col>
+                <ion-col *ngIf="!otherpic3" (click)="getPhoto('otherpic3')" col-4>
+                    <div class="document-img-box dotted-border">
+                        <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
+                    </div>
+                </ion-col>
+              </ion-col>
+
+              <ion-col>
+                <ion-col (click)="getPhoto('otherpic4')" *ngIf="otherpic4" col-4>
+                    <div class="document-img-box">
+                        <img [src]="otherpic4">
+                    </div>
+                </ion-col>
+                <ion-col *ngIf="!otherpic4" (click)="getPhoto('otherpic4')" col-4>
+                    <div class="document-img-box dotted-border">
+                        <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
+                    </div>
+                </ion-col>
+              </ion-col>
+            </ion-row>
+
+            <ion-input formControlName="otherpic1" [(ngModel)]="otherpic1" type="text" hidden></ion-input>
+            <ion-input formControlName="otherpic2" [(ngModel)]="otherpic2" type="text" hidden></ion-input>
+            <ion-input formControlName="otherpic3" [(ngModel)]="otherpic3" type="text" hidden></ion-input>
+            <ion-input formControlName="otherpic4" [(ngModel)]="otherpic4" type="text" hidden></ion-input>
+            <div no-lines
+                *ngIf="register.get('otherpic1').hasError('required') && register.get('otherpic1').touched &&
+                register.get('otherpic2').hasError('required') && register.get('otherpic2').touched &&
+                register.get('otherpic3').hasError('required') && register.get('otherpic3').touched &&
+                register.get('otherpic4').hasError('required') && register.get('otherpic4').touched">
+                <div class="error">
+                  Other Photos is required
+                </div>
+            </div>
+
+
+  <!--    <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+        </ion-label>
+        <ion-input type="text"  placeholder="Mother Name" formControlName="mothername" required></ion-input>
+      </ion-item>
+      <div no-lines
+            *ngIf="register.get('mothername').hasError('required') && register.get('mothername').touched">
+      <div class="error">
+        Mother Name is required
+      </div>
+      </div>
+      -->        
+
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+        </ion-label>
+        <ion-input type="text"  placeholder="Father Name" formControlName="fathername" required></ion-input>
+      </ion-item>
+      <div no-lines
+            *ngIf="register.get('fathername').hasError('required') && register.get('fathername').touched">
+      <div class="error">
+        Father Name is required
+      </div>
+      </div>
+
+        <ion-item>
+          <ion-label>
+              <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+          </ion-label>
+          <ion-input type="number"  placeholder="Father Mobile No" formControlName="fathermobileno" required></ion-input>
+        </ion-item>
+        <div no-lines
+        *ngIf="( register.get('fathermobileno').hasError('minlength') || register.get('fathermobileno').hasError('pattern') ||register.get('fathermobileno').hasError('required') ) && register.get('fathermobileno').touched">
+        <div class="error"
+          *ngIf="register.get('fathermobileno').hasError('required') && register.get('fathermobileno').touched">
+          Please mobile no
+        </div>
+        <div class="error"
+          *ngIf="register.get('fathermobileno').hasError('pattern') && register.get('fathermobileno').touched">
+          mobile No invalid
+        </div>
+      </div>
+
+    <ion-item>
+      <ion-label>
+          <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+      </ion-label>
+      <ion-select interface="popover" placeholder="Father Occupasion" formControlName="fatheroccupasion">
+          <ion-option value="PE">Private </ion-option>
+          <ion-option value="Bu">Bussiness</ion-option>
+          <ion-option value="O">Other</ion-option>
+      </ion-select>
+    </ion-item>
+    <div no-lines *ngIf="register.get('fatheroccupasion').hasError('required') && register.get('fatheroccupasion').touched">
+    <div class="error">
+      Select Father Occupasion
+    </div>
+    </div>
+
+    <ion-item>
+      <ion-label>
+          <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+      </ion-label>
+      <ion-select interface="popover" placeholder="Mother Occupasion" formControlName="motheroccupasion">
+          <ion-option value="PE">Private </ion-option>
+          <ion-option value="Bu">Bussiness</ion-option>
+          <ion-option value="O">Other</ion-option>
+      </ion-select>
+    </ion-item>
+    <div no-lines *ngIf="register.get('motheroccupasion').hasError('required') && register.get('motheroccupasion').touched">
+    <div class="error">
+      Select Mother Occupasion
+    </div>
+    </div>
+
+
+
+      </ion-list> 
+      <ion-row>
+        <ion-col>
+          <button ion-button start round center (click)="goBack()" class="login-btn">Prev</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button round center type="submit" class="login-btn">Next</button>
+        </ion-col>
+      </ion-row>
+    <!--<button ion-button round center class="login-btn" type="submit">Next</button>-->
+    </form>
+</div>
+</div>
+
+</ion-content>

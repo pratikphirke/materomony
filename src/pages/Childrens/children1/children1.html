@@ -1,0 +1,485 @@
+
+
+<ion-content padding>
+  <ion-slides #slides>
+    <ion-slide>
+      <div class="login-box-section">
+        <div class="login-box">
+            <form [formGroup]="childrensForm"  [formGroup]="childrensForm">
+              <ion-list class="login-user-info">
+                 <h4>Children 1 Details</h4>
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text"  placeholder="Enter children Name" formControlName="name" required></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-label>
+          
+                  <ion-input type="text" placeholder="Children Birth date" class="textbox-n" 
+                  onfocus="(this.type='date')"  [(ngModel)]="birthdate" id="date"
+                   formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="childrensForm.get('birthdate').hasError('required') && childrensForm.get('birthdate').touched">
+                  <div class="error">
+                    Select Children Birth Date
+                  </div>
+                </div>
+          
+                  <ion-item *ngIf="birthdate">
+                        <ion-label>
+                          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Age" formControlName="age"
+                        value="{{ageFromDateOfBirthday(birthdate)}}" readonly></ion-input>
+                  </ion-item>
+          
+                    
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status">
+                    <ion-option value="Married">Married</ion-option>
+                    <ion-option value="Unmarried">Unmarried</ion-option>
+                    <ion-option value="Divorced">Divorced</ion-option>
+                  </ion-select>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Children Gender" formControlName="gender"  required>
+                    
+                    <ion-option value="M">Male</ion-option>
+                    <ion-option value="F">Female</ion-option>
+                    <ion-option value="O">Other</ion-option>
+                  </ion-select>
+                </ion-item>
+                
+                <span *ngIf="noOfchildrens > 1; else elseBlock">
+                 
+                  <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next(childrensForm.value)">Save & Next</button>
+                </span>
+                <ng-template #elseBlock>
+                  <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(childrensForm.value)">save & continue</button>
+                </ng-template>
+              </ion-list>
+               <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
+             
+            </form>
+          </div>
+        </div>
+        
+    </ion-slide>
+  
+    <ion-slide>
+      <div class="login-box-section">
+        <div class="login-box">
+            <form [formGroup]="childrensForm">
+              <ion-list class="login-user-info">
+                <span><h4>Children 2 Details</h4></span>
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text"  placeholder="Enter 2nd childrens Name" formControlName="name" required></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-label>
+               
+          
+                  <ion-input type="text" placeholder=" Children Birth date" class="textbox-n" 
+                  onfocus="(this.type='date')"  [(ngModel)]="birthdate" id="date"
+                   formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="childrensForm.get('birthdate').hasError('required') && childrensForm.get('birthdate').touched">
+                  <div class="error">
+                    Select Children Birth Date
+                  </div>
+                </div>
+          
+                  <ion-item *ngIf="birthdate">
+                        <ion-label>
+                          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Age" formControlName="age"
+                        value="{{ageFromDateOfBirthday(birthdate)}}"  readonly></ion-input>
+                  </ion-item>
+          
+                    
+    
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status">
+                    <ion-option value="Married">Married</ion-option>
+                    <ion-option value="Unmarried">Unmarried</ion-option>
+                    <ion-option value="Divorced">Divorced</ion-option>
+                  </ion-select>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Children Gender" formControlName="gender"  required>
+                    
+                    <ion-option value="M">Male</ion-option>
+                    <ion-option value="F">Female</ion-option>
+                    <ion-option value="O">Other</ion-option>
+                  </ion-select>
+                </ion-item>
+                
+              </ion-list>
+              <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
+              <span *ngIf="noOfchildrens > '2'; else elseBlock">
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next(childrensForm.value)">Save & Next</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </span>
+              <ng-template #elseBlock>
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(childrensForm.value)">save & continue</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </ng-template>
+            </form>
+          </div>
+      </div>
+      
+    </ion-slide>
+  
+    <ion-slide>
+      <div class="login-box-section">
+        <div class="login-box">
+            <form [formGroup]="childrensForm">
+              <ion-list class="login-user-info">
+                <span><h4>Children 3 Details</h4></span>
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text"  placeholder="Enter 3rd childrens Name" formControlName="name" required></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-label>
+               
+          
+                  <ion-input type="text" placeholder="Children Birth date" class="textbox-n" 
+                  onfocus="(this.type='date')"  [(ngModel)]="birthdate" id="date"
+                   formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="childrensForm.get('birthdate').hasError('required') && childrensForm.get('birthdate').touched">
+                  <div class="error">
+                    Select Children Birth Date
+                  </div>
+                </div>
+          
+                  <ion-item *ngIf="birthdate">
+                        <ion-label>
+                          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Age" formControlName="age"
+                        value="{{ageFromDateOfBirthday(birthdate)}}"  readonly></ion-input>
+                  </ion-item>
+          
+                    
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status">
+                    <ion-option value="Married">Married</ion-option>
+                    <ion-option value="Unmarried">Unmarried</ion-option>
+                    <ion-option value="Divorced">Divorced</ion-option>
+                  </ion-select>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Children Gender" formControlName="gender"  required>
+                    
+                    <ion-option value="M">Male</ion-option>
+                    <ion-option value="F">Female</ion-option>
+                    <ion-option value="O">Other</ion-option>
+                  </ion-select>
+                </ion-item>
+                
+              </ion-list>
+              <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
+              <span *ngIf="noOfchildrens > '3'; else elseBlock">
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next(childrensForm.value)">Save & Next</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </span>
+              <ng-template #elseBlock>
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(childrensForm.value)">save & continue</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </ng-template>
+            </form>
+          </div>
+      </div>
+      
+    </ion-slide>
+
+    <ion-slide>
+      <div class="login-box-section">
+        <div class="login-box">
+            <form [formGroup]="childrensForm">
+              <ion-list class="login-user-info">
+                <span><h4>Children 4 Details</h4></span>
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text"  placeholder="Enter 4th childrens Name" formControlName="name" required></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-label>
+               
+          
+                  <ion-input type="text" placeholder=" Children Birth date" class="textbox-n" 
+                  onfocus="(this.type='date')"  [(ngModel)]="birthdate" id="date"
+                   formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="childrensForm.get('birthdate').hasError('required') && childrensForm.get('birthdate').touched">
+                  <div class="error">
+                    Select Children Birth Date
+                  </div>
+                </div>
+          
+                  <ion-item *ngIf="birthdate">
+                        <ion-label>
+                          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Age" formControlName="age"
+                        value="{{ageFromDateOfBirthday(birthdate)}}"  readonly></ion-input>
+                  </ion-item>
+          
+                    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status">
+                    <ion-option value="Married">Married</ion-option>
+                    <ion-option value="Unmarried">Unmarried</ion-option>
+                    <ion-option value="Divorced">Divorced</ion-option>
+                  </ion-select>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Children Gender" formControlName="gender"  required>
+                    
+                    <ion-option value="M">Male</ion-option>
+                    <ion-option value="F">Female</ion-option>
+                    <ion-option value="O">Other</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+              <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
+              <span *ngIf="noOfchildrens > '4'; else elseBlock">
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next(childrensForm.value)">Save & Next</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </span>
+              <ng-template #elseBlock>
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(childrensForm.value)">save & continue</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </ng-template>
+            </form>
+          </div>
+      </div>
+      
+    </ion-slide>
+
+    <ion-slide><!-- style="background-color: red"-->
+      <div class="login-box-section">
+        <div class="login-box">
+            <form [formGroup]="childrensForm">
+              <ion-list class="login-user-info">
+                <span><h4>Children 5 Details</h4></span>
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text"  placeholder="Enter 5th childrens Name" formControlName="name" required></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-label>
+               
+          
+                  <ion-input type="text" placeholder="Children Birth date" class="textbox-n" 
+                  onfocus="(this.type='date')"  [(ngModel)]="birthdate" id="date"
+                   formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="childrensForm.get('birthdate').hasError('required') && childrensForm.get('birthdate').touched">
+                  <div class="error">
+                    Select Children Birth Date
+                  </div>
+                </div>
+          
+                  <ion-item *ngIf="birthdate">
+                        <ion-label>
+                          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Age" formControlName="age"
+                        value="{{ageFromDateOfBirthday(birthdate)}}"  readonly></ion-input>
+                  </ion-item>
+          
+                    
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status">
+                    <ion-option value="Married">Married</ion-option>
+                    <ion-option value="Unmarried">Unmarried</ion-option>
+                    <ion-option value="Divorced">Divorced</ion-option>
+                  </ion-select>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Children Gender" formControlName="gender"  required>
+                    
+                    <ion-option value="M">Male</ion-option>
+                    <ion-option value="F">Female</ion-option>
+                    <ion-option value="O">Other</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+              <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
+              <span *ngIf="noOfchildrens > '5'; else elseBlock">
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(childrensForm.value)">Save & Next</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </span>
+              <ng-template #elseBlock>
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(childrensForm.value)">save & continue</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </ng-template>
+            </form>
+          </div>
+      </div>
+    </ion-slide>
+  
+  </ion-slides>
+</ion-content>
+
+<!--
+
+<ion-content padding>
+  <div class="login-box-section">
+    <div class="login-box">
+    <div class="logo-box">
+            <img src="assets/imgs/logo-1.jpg">
+        </div>
+
+        <form (ngSubmit)="SaveChildrensInfo(register.value)" [formGroup]="register">
+          <ion-list class="login-user-info">
+          
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  placeholder=" Children Name" formControlName="noofChildren_name" required></ion-input>
+        </ion-item>
+        <ion-item no-lines
+          *ngIf="register.get('noofChildren_name').hasError('required') && register.get('noofChildren_name').touched">
+        <div class="error">
+          Children  Name is required
+        </div>
+       </ion-item>
+       <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+        </ion-label>
+        <ion-input type="date" placeholder="Children1 DOB"  [(ngModel)]="birthdate"  formControlName="noofChildren_dob" displayFormat="DD-MM-YYYY"></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="register.get('noofChildren_dob').hasError('required') && register.get('noofChildren_dob').touched">
+        <div class="error">
+          Select Children1 Birthdate
+        </div>
+        </ion-item>
+
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+        </ion-label>
+        <ion-input type="number" placeholder="Children1 Age" formControlName="noofChildren_age" value="{{ageFromDateOfBirthday(birthdate)}}" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+        </ion-label>
+        <ion-select interface="popover" placeholder="Children Gender" formControlName="noofChildren_gender"  required>
+          
+          <ion-option value="M">Male</ion-option>
+          <ion-option value="F">Female</ion-option>
+          <ion-option value="O">Other</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item no-lines *ngIf="register.get('noofChildren_gender').hasError('required') && register.get('noofChildren_gender').touched">
+      <div class="error">
+        Select children gender
+      </div>
+      </ion-item>
+   
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+        </ion-label>
+        <ion-select interface="popover" placeholder="Children1 Marital Status" formControlName="noofChildren_marital_status" s required>
+          
+            <ion-option value="UnMarried">UnMarried				
+            </ion-option>
+            <ion-option value="Divorse">Divorse / Vidows				
+            </ion-option>
+            <ion-option value="Married">Married				
+            </ion-option>
+            <ion-option value="NeverMarried">Never Married				
+            </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item no-lines *ngIf="register.get('noofChildren_marital_status').hasError('required') && register.get('noofChildren_marital_status').touched">
+      <div class="error">
+        Select Marital Status
+      </div>
+      </ion-item>
+
+
+      </ion-list> 
+        <button ion-button round center class="login-btn" type="submit">Save</button>
+    </form>
+</div>
+</div>
+
+</ion-content>
+-->

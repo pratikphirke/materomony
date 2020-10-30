@@ -1,0 +1,369 @@
+
+
+<ion-content padding>
+  <ion-slides #slides>
+    <ion-slide>
+      <div class="login-box-section">
+        <div class="login-box">
+            <form [formGroup]="brothersForm"  [formGroup]="brothersForm">
+              <ion-list class="login-user-info">
+                 <h4>Brother 1 Details</h4>
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text"  placeholder="Enter brothers Name" formControlName="name" required></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-label>
+          
+                  <ion-input type="text" placeholder="Brother Birth date" class="textbox-n" 
+                  onfocus="(this.type='date')"  [(ngModel)]="birthdate" id="date"
+                   formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="brothersForm.get('birthdate').hasError('required') && brothersForm.get('birthdate').touched">
+                  <div class="error">
+                    Select Brother Birth Date
+                  </div>
+                </div>
+          
+                  <ion-item *ngIf="birthdate">
+                        <ion-label>
+                          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Age" formControlName="age"
+                        value="{{ageFromDateOfBirthday(birthdate)}}"  readonly></ion-input>
+                  </ion-item>
+          
+                    
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status">
+                    <ion-option value="Married">Married</ion-option>
+                    <ion-option value="Unmarried">Unmarried</ion-option>
+                    <ion-option value="Divorced">Divorced</ion-option>
+                  </ion-select>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-input type="number" placeholder="Mobile Number" formControlName="mobile" required></ion-input>
+                </ion-item>
+                
+                <span *ngIf="noOfBrothers > 1; else elseBlock">
+                 
+                  <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next(brothersForm.value)">Save & Next</button>
+                </span>
+                <ng-template #elseBlock>
+                  <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(brothersForm.value)">save & continue</button>
+                </ng-template>
+              </ion-list>
+               <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
+             
+            </form>
+          </div>
+        </div>
+        
+    </ion-slide>
+  
+    <ion-slide>
+      <div class="login-box-section">
+        <div class="login-box">
+            <form [formGroup]="brothersForm">
+              <ion-list class="login-user-info">
+                <span><h4>Brother 2 Details</h4></span>
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text"  placeholder="Enter 2nd brothers Name" formControlName="name" required></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-label>
+               
+          
+                  <ion-input type="text" placeholder=" Brother Birth date" class="textbox-n" 
+                  onfocus="(this.type='date')"  [(ngModel)]="birthdate" id="date"
+                   formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="brothersForm.get('birthdate').hasError('required') && brothersForm.get('birthdate').touched">
+                  <div class="error">
+                    Select Brother Birth Date
+                  </div>
+                </div>
+          
+                  <ion-item *ngIf="birthdate">
+                        <ion-label>
+                          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Age" formControlName="age"
+                        value="{{ageFromDateOfBirthday(birthdate)}}"  readonly></ion-input>
+                  </ion-item>
+          
+                    
+    
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status">
+                    <ion-option value="Married">Married</ion-option>
+                    <ion-option value="Unmarried">Unmarried</ion-option>
+                    <ion-option value="Divorced">Divorced</ion-option>
+                  </ion-select>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-input type="number" placeholder="Mobile Number" formControlName="mobile" required></ion-input>
+                </ion-item>
+                
+              </ion-list>
+              <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
+              <span *ngIf="noOfBrothers > '2'; else elseBlock">
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next(brothersForm.value)">Save & Next</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </span>
+              <ng-template #elseBlock>
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(brothersForm.value)">save & continue</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </ng-template>
+            </form>
+          </div>
+      </div>
+      
+    </ion-slide>
+  
+    <ion-slide>
+      <div class="login-box-section">
+        <div class="login-box">
+            <form [formGroup]="brothersForm">
+              <ion-list class="login-user-info">
+                <span><h4>Brother 3 Details</h4></span>
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text"  placeholder="Enter 3rd brothers Name" formControlName="name" required></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-label>
+               
+          
+                  <ion-input type="text" placeholder="Brother Birth date" class="textbox-n" 
+                  onfocus="(this.type='date')"  [(ngModel)]="birthdate" id="date"
+                   formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="brothersForm.get('birthdate').hasError('required') && brothersForm.get('birthdate').touched">
+                  <div class="error">
+                    Select Brother Birth Date
+                  </div>
+                </div>
+          
+                  <ion-item *ngIf="birthdate">
+                        <ion-label>
+                          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Age" formControlName="age"
+                        value="{{ageFromDateOfBirthday(birthdate)}}" readonly></ion-input>
+                  </ion-item>
+          
+                    
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status">
+                    <ion-option value="Married">Married</ion-option>
+                    <ion-option value="Unmarried">Unmarried</ion-option>
+                    <ion-option value="Divorced">Divorced</ion-option>
+                  </ion-select>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-input type="number" placeholder="Mobile Number" formControlName="mobile" required></ion-input>
+                </ion-item>
+                
+              </ion-list>
+              <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
+              <span *ngIf="noOfBrothers > '3'; else elseBlock">
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next(brothersForm.value)">Save & Next</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </span>
+              <ng-template #elseBlock>
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(brothersForm.value)">save & continue</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </ng-template>
+            </form>
+          </div>
+      </div>
+      
+    </ion-slide>
+
+    <ion-slide>
+      <div class="login-box-section">
+        <div class="login-box">
+            <form [formGroup]="brothersForm">
+              <ion-list class="login-user-info">
+                <span><h4>Brother 4 Details</h4></span>
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text"  placeholder="Enter 4th brothers Name" formControlName="name" required></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-label>
+               
+          
+                  <ion-input type="text" placeholder=" Brother Birth date" class="textbox-n" 
+                  onfocus="(this.type='date')"  [(ngModel)]="birthdate" id="date"
+                   formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="brothersForm.get('birthdate').hasError('required') && brothersForm.get('birthdate').touched">
+                  <div class="error">
+                    Select Brother Birth Date
+                  </div>
+                </div>
+          
+                  <ion-item *ngIf="birthdate">
+                        <ion-label>
+                          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Age" formControlName="age"
+                        value="{{ageFromDateOfBirthday(birthdate)}}"  readonly></ion-input>
+                  </ion-item>
+          
+                    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status">
+                    <ion-option value="Married">Married</ion-option>
+                    <ion-option value="Unmarried">Unmarried</ion-option>
+                    <ion-option value="Divorced">Divorced</ion-option>
+                  </ion-select>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-input type="number" placeholder="Mobile Number" formControlName="mobile" required></ion-input>
+                </ion-item>
+                
+              </ion-list>
+              <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
+              <span *ngIf="noOfBrothers > '4'; else elseBlock">
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next(brothersForm.value)">Save & Next</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </span>
+              <ng-template #elseBlock>
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(brothersForm.value)">save & continue</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </ng-template>
+            </form>
+          </div>
+      </div>
+      
+    </ion-slide>
+
+    <ion-slide><!-- style="background-color: red"-->
+      <div class="login-box-section">
+        <div class="login-box">
+            <form [formGroup]="brothersForm">
+              <ion-list class="login-user-info">
+                <span><h4>Brother 5 Details</h4></span>
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text"  placeholder="Enter 5th brothers Name" formControlName="name" required></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-label>
+               
+          
+                  <ion-input type="text" placeholder="Brother Birth date" class="textbox-n" 
+                  onfocus="(this.type='date')"  [(ngModel)]="birthdate" id="date"
+                   formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="brothersForm.get('birthdate').hasError('required') && brothersForm.get('birthdate').touched">
+                  <div class="error">
+                    Select Brother Birth Date
+                  </div>
+                </div>
+          
+                  <ion-item *ngIf="birthdate">
+                        <ion-label>
+                          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Age" formControlName="age"
+                        value="{{ageFromDateOfBirthday(birthdate)}}"  readonly></ion-input>
+                  </ion-item>
+          
+                    
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status">
+                    <ion-option value="Married">Married</ion-option>
+                    <ion-option value="Unmarried">Unmarried</ion-option>
+                    <ion-option value="Divorced">Divorced</ion-option>
+                  </ion-select>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-input type="number" placeholder="Mobile Number" formControlName="mobile" required></ion-input>
+                </ion-item>
+                
+              </ion-list>
+              <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
+              <span *ngIf="noOfBrothers > '5'; else elseBlock">
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(brothersForm.value)">Save & Next</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </span>
+              <ng-template #elseBlock>
+                <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="close(brothersForm.value)">save & continue</button>
+                <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+              </ng-template>
+            </form>
+          </div>
+      </div>
+    </ion-slide>
+  
+  </ion-slides>
+</ion-content>

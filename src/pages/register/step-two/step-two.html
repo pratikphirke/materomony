@@ -1,0 +1,111 @@
+<!--
+<ion-header>
+  <ion-navbar>
+    <ion-title>Step Two</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+<ion-content padding>
+
+
+  <div class="login-box-section">
+      <div class="login-box">
+        <!--
+        <div class="logo-box">
+              <img src="assets/imgs/logo-1.jpg">
+          </div>
+-->
+          <form (ngSubmit)="Register_Steptwo(register.value)" [formGroup]="register">
+          <ion-list class="login-user-info">
+
+            <ion-item>
+              <ion-label>
+                  <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+              </ion-label>
+              <ion-select interface="popover" placeholder="--Select Country--"  formControlName="country" 
+              [(ngModel)] ="selectedCountry" (ionChange)="onSelectCountry($event)">
+                <ion-option   *ngFor="let country of countries" [value]="country">{{country.name}}</ion-option>
+              </ion-select>
+          </ion-item>
+          <div no-lines *ngIf="register.get('country').hasError('required') && register.get('country').touched">
+            <div class="error">
+              Select Country
+            </div>
+          </div>
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+            </ion-label>
+            <ion-select interface="popover" placeholder="--Select State--"  formControlName="state"
+             [(ngModel)] ="selectedState" (ionChange)="onSelectState($event)">
+              <ion-option *ngFor="let state of states" [value]="state">{{state.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <div no-lines *ngIf="register.get('state').hasError('required') && register.get('state').touched">
+          <div class="error">
+            Select State
+          </div>
+        </div>
+
+    
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+            </ion-label>
+            <ion-select interface="popover" placeholder="--Select City--"  formControlName="city" 
+            [(ngModel)] ="selectedCity" (ionChange)="onSelectCity($event)">
+              <ion-option *ngFor="let city of cities" [value]="city">{{city.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <div no-lines *ngIf="register.get('city').hasError('required') && register.get('city').touched">
+          <div class="error">
+            Select City
+          </div>
+        </div>
+            
+
+
+        <ion-item>
+          <ion-label>
+              <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+          </ion-label>
+          <ion-input type="text" placeholder="Present Address" formControlName="Present_Address" required></ion-input>
+        </ion-item>
+        <div no-lines
+        *ngIf="register.get('Present_Address').hasError('required') && register.get('Present_Address').touched">
+        <div class="error">
+          Present Address is required 
+        </div>
+        </div>
+
+        <ion-item>
+          <ion-label>
+              <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+          </ion-label>
+          <ion-input type="text"  placeholder="Permenent Address" formControlName="Permenent_Address" required></ion-input>
+        </ion-item>
+        <div no-lines
+        *ngIf="register.get('Permenent_Address').hasError('required') && register.get('Permenent_Address').touched">
+        <div class="error">
+          Permenent Address is required
+        </div>
+        </div>
+
+            </ion-list>
+            <ion-row>
+              <ion-col>
+                <button ion-button start round center (click)="goBack()" class="login-btn">Prev</button>
+              </ion-col>
+              <ion-col>
+                <button ion-button round center type="submit" class="login-btn">Next</button>
+              </ion-col>
+            </ion-row>
+          <!--<button ion-button round center class="login-btn" type="submit">Next</button>-->
+        </form>
+      </div>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,117 @@
+<!--
+<ion-header>
+  <ion-navbar>
+    <ion-title>business-step2</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+<ion-content padding>
+
+  <div class="login-box-section">
+    <div class="login-box">
+      <!--  <div class="logo-box">
+            <img src="assets/imgs/logo-1.jpg">
+        </div>
+-->
+        <form [formGroup]="businessForm" (ngSubmit)="submitDetails(businessForm.value)">
+          <ion-list class="login-user-info">
+
+              <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                  </ion-label>
+                  <ion-input type="number" placeholder="Mobile 1"  formControlName="mobile1"></ion-input>
+              </ion-item>
+              <div no-lines
+              *ngIf="( businessForm.get('mobile1').hasError('minlength') || businessForm.get('mobile1').hasError('pattern') ||businessForm.get('mobile1').hasError('required') ) && businessForm.get('mobile1').touched">
+              <div class="error"
+                *ngIf="businessForm.get('mobile1').hasError('required') && businessForm.get('mobile1').touched">
+                Please Enter Mobile NO1
+              </div>
+              <div class="error"
+                *ngIf="businessForm.get('mobile1').hasError('minlength') && businessForm.get('mobile1').touched">
+                Invalid Mobile NO1
+              </div>
+              </div>
+
+              <ion-item>
+                <ion-label>
+                    <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                </ion-label>
+                <ion-input type="number" placeholder="Mobile 2"  formControlName="mobile2"></ion-input>
+              </ion-item> 
+              <div no-lines
+              *ngIf="( businessForm.get('mobile2').hasError('minlength') || businessForm.get('mobile2').hasError('pattern') ||businessForm.get('mobile2').hasError('required') ) && businessForm.get('mobile2').touched">
+              <div class="error"
+                *ngIf="businessForm.get('mobile2').hasError('required') && businessForm.get('mobile2').touched">
+                Please Enter Mobile NO2
+              </div>
+              <div class="error"
+                *ngIf="businessForm.get('mobile2').hasError('minlength') && businessForm.get('mobile2').touched">
+                 Invalid Mobile NO2
+              </div>
+            </div>
+
+              <ion-item>
+                <ion-label>
+                    <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                </ion-label>
+                <ion-input type="text" placeholder="GSTIN"  formControlName="gstin"></ion-input>
+              </ion-item>
+              <div no-lines
+              *ngIf="businessForm.get('gstin').hasError('required') && businessForm.get('gstin').touched">
+                <div class="error">
+                  Gst Details is required
+                </div>
+              </div>
+
+
+              <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Business Type"  formControlName="businessType">
+                      <ion-option value="Production">Production</ion-option>
+                      <ion-option value="Services">Services</ion-option>
+
+                  </ion-select>
+              </ion-item>
+              <div no-lines *ngIf="businessForm.get('businessType').hasError('required') && businessForm.get('businessType').touched">
+                <div class="error">
+                  Select Business Type
+                </div>
+              </div>
+
+
+              <ion-item>
+                <ion-label>
+                    <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                </ion-label>
+                <ion-select interface="popover" placeholder="Products/Services"  formControlName="products">
+                    <ion-option value="less than 1 Year">Less than 1 year</ion-option>
+                    <ion-option value="1 year">1 Year</ion-option>
+                    <ion-option value="2 year">2 Year</ion-option>
+
+                </ion-select>
+              </ion-item>
+                     <div no-lines *ngIf="businessForm.get('products').hasError('required') && businessForm.get('products').touched">
+                    <div class="error">
+                      Select products
+                    </div>
+                  </div>
+
+
+          </ion-list>
+          <ion-row>
+            <ion-col>
+              <button ion-button start round center (click)="goBack()" class="login-btn">Prev</button>
+            </ion-col>
+            <ion-col>
+              <button ion-button round center type="submit" class="login-btn">Next</button>
+            </ion-col>
+          </ion-row>
+        <!--<button ion-button round center class="login-btn" type="submit">Next</button>-->
+      </form>
+    </div>
+</div>
+</ion-content>

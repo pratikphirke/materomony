@@ -1,0 +1,44 @@
+
+
+<ion-header class="ion-no-border">
+    <ion-navbar>
+      <button>
+        <ion-icon  slot="icon-only" name="custom-person-circle-sharp"></ion-icon>
+      </button>
+      
+        <ion-buttons end>
+          <button ion-button end>
+            <ion-icon  slot="icon-only"  name="custom-ellipsis-horizontal"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  
+  
+  
+  <ion-content padding>
+    <h2>Welcome to App</h2>
+    <!--
+  <ion-list *ngFor="let item of samples">
+      <ion-card (click)="itemTapped(item,item.id) ">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="../../assets/icon/favicon.ico">
+        </ion-thumbnail>
+         
+    <h6>Name: <b>{{item.Name}}</b></h6>
+    <h6>Age: <b>  {{item.age}}</b></h6>
+    <h6>City: <b> {{item.city}}</b></h6>
+  
+   
+      </ion-item>
+    </ion-card>
+    </ion-list>-->
+    <button ion-button (click)="logout()">logout
+      <ion-icon  slot="icon-only" name="md-log-out"></ion-icon>
+    </button>
+  
+  </ion-content>
+  

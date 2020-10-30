@@ -14,7 +14,10 @@ $app-direction: ltr;
 
 @import "ionic.globals";
 
-
+.swipe-area {
+  height:100%;
+  width:100%;
+}
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override

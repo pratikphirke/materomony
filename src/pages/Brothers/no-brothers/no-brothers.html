@@ -1,0 +1,122 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title> Brothers Information</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="login-box-section">
+    <div class="login-box">
+    <div class="logo-box">
+            <img src="assets/imgs/logo-1.jpg">
+        </div>
+
+        <form (ngSubmit)="SaveBrotherInfo(register.value)" [formGroup]="register">
+          <ion-list class="login-user-info">
+          
+        <ion-item>
+          <ion-label>
+              <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+          </ion-label>
+      
+    
+          <ion-select interface="popover" placeholder="No of Brothers" formControlName="noofBrothers"
+          [(ngModel)] ="Noofbrothers" (ionChange)="onSelectBrother($event)">
+          <ion-option   *ngFor="let bro of Brothers" [value]="bro">{{bro.name}}</ion-option>
+           <!-- <ion-option value="1Bro">1 Brother</ion-option>
+            <ion-option value="2Bro">2 Brother</ion-option>
+            <ion-option value="3Bro">3 Brother</ion-option>
+            <ion-option value="4Bro">4 Brother</ion-option>
+            <ion-option value="5Bro">5 Brother</ion-option>
+            <ion-option value="more">More than 6</ion-option>
+            -->
+          </ion-select>
+       
+        </ion-item>
+        <ion-item no-lines *ngIf="register.get('noofBrothers').hasError('required') && register.get('noofBrothers').touched">
+        <div class="error">
+        Select No Of Brothers
+        </div>
+        </ion-item>
+        <span *ngIf="selectedBro == 'bro1';">
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  placeholder=" Brother Name" formControlName="noofBrothers_name" required></ion-input>
+        </ion-item>
+        <ion-item no-lines
+          *ngIf="register.get('noofBrothers_name').hasError('required') && register.get('noofBrothers_name').touched">
+        <div class="error">
+          Brother1  Name is required
+        </div>
+       </ion-item>
+       <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+        </ion-label>
+        <ion-input type="date" placeholder="Brother1 DOB"  [(ngModel)]="birthdate"  formControlName="noofBrothers_dob" displayFormat="DD-MM-YYYY"></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="register.get('noofBrothers_dob').hasError('required') && register.get('noofBrothers_dob').touched">
+        <div class="error">
+          Select Brother1 Birthdate
+        </div>
+        </ion-item>
+
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+        </ion-label>
+        <ion-input type="number" placeholder="Brother1 Age" formControlName="noofBrothers_age" value="{{ageFromDateOfBirthday(birthdate)}}" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+        </ion-label>
+        <ion-select interface="popover" placeholder="Brother1 Marital Status" formControlName="noofBrothers_marital_status" s required>
+          
+            <ion-option value="UnMarried">UnMarried				
+            </ion-option>
+            <ion-option value="Divorse">Divorse / Vidows				
+            </ion-option>
+            <ion-option value="Married">Married				
+            </ion-option>
+            <ion-option value="NeverMarried">Never Married				
+            </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item no-lines *ngIf="register.get('noofBrothers_marital_status').hasError('required') && register.get('noofBrothers_marital_status').touched">
+      <div class="error">
+        Select Marital Status
+      </div>
+      </ion-item>
+   
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+        </ion-label>
+        <ion-input type="number" placeholder="Brother1 Mobile No" formControlName="noofBrothers_mobile" required></ion-input>
+    </ion-item>
+    <ion-item no-lines
+    *ngIf="( register.get('noofBrothers_mobile').hasError('minlength') || register.get('noofBrothers_mobile').hasError('pattern') ||register.get('noofBrothers_mobile').hasError('required') ) && register.get('noofBrothers_mobile').touched">
+    <div class="error"
+      *ngIf="register.get('noofBrothers_mobile').hasError('required') && register.get('noofBrothers_mobile').touched">
+      Please input your mobile1
+    </div>
+    <div class="error"
+      *ngIf="register.get('noofBrothers_mobile').hasError('pattern') && register.get('noofBrothers_mobile').touched">
+      mobile No1 invalid
+    </div>
+  </ion-item>
+   
+  </span>
+
+      </ion-list> 
+        <button ion-button round center class="login-btn" type="submit">Save</button>
+    </form>
+</div>
+</div>
+
+</ion-content>

@@ -1,0 +1,149 @@
+
+<!--
+<ion-header>
+    <ion-navbar>
+      <ion-title>job Details</ion-title>
+    </ion-navbar>
+  </ion-header>
+  -->
+<ion-content padding>
+
+
+  <div class="login-box-section">
+      <div class="login-box">
+     <!---     <div class="logo-box">
+              <img src="assets/imgs/logo-1.jpg">
+          </div>
+-->
+          <form [formGroup]="jobDetailsForm" (ngSubmit)="submitDetails(jobDetailsForm.value)">
+            <ion-list class="login-user-info">
+                <span><h4>Job Details </h4></span>
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                    </ion-label>
+                    <ion-input type="text" placeholder="Experience" formControlName="experience"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="jobDetailsForm.get('experience').hasError('required') && jobDetailsForm.get('experience').touched">
+                    <div class="error">
+                 Enter Experience
+                    </div>
+                  </div>
+        
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                    </ion-label>
+                    <ion-input type="text" placeholder=" Current company details"  formControlName="company"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="jobDetailsForm.get('experience').hasError('required') && jobDetailsForm.get('experience').touched">
+                    <div class="error">
+                 Enter Experience
+                    </div>
+                  </div>
+        
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left name="mail"></ion-icon>
+                    </ion-label>
+                    <ion-input type="text" placeholder="Achievements"  formControlName="achievements"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="jobDetailsForm.get('experience').hasError('required') && jobDetailsForm.get('experience').touched">
+                    <div class="error">
+                 Enter Experience
+                    </div>
+                  </div>
+        
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                    </ion-label>
+                    <ion-input type="text" placeholder="Awards"  formControlName="awards"></ion-input>
+                </ion-item>
+                <div no-lines *ngIf="jobDetailsForm.get('awards').hasError('required') && jobDetailsForm.get('awards').touched">
+                    <div class="error">
+                 Enter awards
+                    </div>
+                  </div>
+        
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                    </ion-label>
+                    <ion-select interface="popover" placeholder="Notice Period"  formControlName="noticePeriod">
+                        <ion-option value="1 Month">1 Month</ion-option>
+                        <ion-option value="2 Month">2 Month</ion-option>
+                        <ion-option value="3 Month">3 Month</ion-option>
+                        <ion-option value="4 Month">4 Month</ion-option>
+                        <ion-option value="5 Month">5 Month</ion-option>
+                        <ion-option value="6 Month">6 Month</ion-option>
+
+                    </ion-select>
+                </ion-item>
+                <div no-lines *ngIf="jobDetailsForm.get('noticePeriod').hasError('required') && jobDetailsForm.get('noticePeriod').touched">
+                    <div class="error">
+                 Select notice Period
+                    </div>
+                  </div>
+        
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Total Experience"  formControlName="totalExperience">
+                      <ion-option value="less than 1 Year">Less than 1 year</ion-option>
+                      <ion-option value="1 year">1 Year</ion-option>
+                      <ion-option value="2 year">2 Year</ion-option>
+                      <ion-option value="3 year">3 Year</ion-option>
+                      <ion-option value="4 year">4 Year</ion-option>
+                      <ion-option value="5 year">5 Year</ion-option>
+
+                  </ion-select>
+                </ion-item>
+                <div no-lines *ngIf="jobDetailsForm.get('totalExperience').hasError('required') && jobDetailsForm.get('totalExperience').touched">
+                    <div class="error">
+                     Select  Total Experience
+                    </div>
+                  </div>
+        
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Current Salary"  formControlName="currentSalary">
+                      <ion-option value="In Lac">In Lac</ion-option>
+                      <ion-option value="In Thousand">In Thousand</ion-option>
+
+                  </ion-select>
+                </ion-item>
+                <div no-lines *ngIf="jobDetailsForm.get('currentSalary').hasError('required') && jobDetailsForm.get('currentSalary').touched">
+                    <div class="error">
+                      Select  current Salary
+                    </div>
+                  </div>
+        
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Expected Salary" formControlName="expectedSalary">
+                      <ion-option value="In Lac">In Lac</ion-option>
+                      <ion-option value="In Thousand">In Thousand</ion-option>
+
+                  </ion-select>
+                </ion-item>
+                <div no-lines *ngIf="jobDetailsForm.get('expectedSalary').hasError('required') && jobDetailsForm.get('expectedSalary').touched">
+                    <div class="error">
+                 Select Expected Salary
+                    </div>
+                  </div>
+        
+            </ion-list>
+
+          <button ion-button round center class="login-btn">Save</button>
+        </form>
+      </div>
+  </div>
+
+
+</ion-content>

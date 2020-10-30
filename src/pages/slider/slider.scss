@@ -1,0 +1,99 @@
+page-slider {
+    .slider-content {
+        margin-top: 0px !important;
+      }
+      .slider-info ion-item {
+        padding-left: 0px;
+      }
+      .slider-info ion-label {
+        color: #000 !important;
+        font-size: 14px !important;
+      }
+      .converted-btn-box .item-inner {
+        padding-right: 0px !important;
+        border-bottom: none !important;
+      }
+      .converted-btn-box ion-label {
+        margin: 20px 0px !important;
+      }
+      .converted-btn {
+        width: 100%;
+        padding: 20px !important;
+        font-size: 16px !important;
+        max-width: 230px;
+        margin: 0px auto !important;
+        display: block;
+        background-color: #00a65a;
+      }
+      .slider-info {
+        margin: 0px;
+      }
+      .converted-btn ion-icon {
+        margin-right: 10px;
+      }
+     // .guidelines-hedding {
+     // }
+      .document-img-box {
+        border: 2px solid #999;
+        height: 100px;
+        width: 100%;
+        max-width: 160px !important;
+        max-height: 90px;
+        // margin: 0px auto;
+      }
+      .dotted-border {
+        border: 2px dotted #999;
+      }
+      .document-img-box img {
+        width: 100%;
+        height: 100%;
+      }
+      //.document-item {}
+      .document-item .item-inner {
+        border-bottom: none !important;
+      }
+      .add-img-icon {
+        text-align: center !important;
+        line-height: 90px;
+        font-size: 36px;
+        color: #285062;
+        display: block;
+      }
+      .gender-box {
+        border-bottom: 1px solid #dedede;
+        padding-bottom: 5px;
+      }
+      .gender-box ion-radio {
+        width: 100%;
+        position: absolute;
+      }
+      .gender-box p {
+        margin: 0px;
+        padding-left: 23px;
+      }
+      .no-padding-1 {
+        padding: 0px !important;
+      }
+      .gender-box .radio-ios .radio-icon {
+        position: relative;
+        display: block;
+        border: 2px solid #285062;
+        width: 19px;
+        height: 19px;
+        border-radius: 50%;
+        top: -2px;
+      }
+      .gender-box .radio-ios .radio-checked .radio-inner {
+        height: 9px;
+        left: 5px;
+        top: 2px;
+      }
+      .ion-md-close-circle,
+      .ion-ios-close-circle {
+        color: #285062;
+        font-size: 2.2em;
+      }
+      .error {
+        color: red;
+      }
+}

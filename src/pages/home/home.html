@@ -1,17 +1,157 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+      <ion-grid class="no-padding">
+          <ion-row>
+              <ion-col col-2>
+                  <div class="user-info-heaser">
+                      <div class="user-img">
+                          <img src="assets/imgs/user-img.jpg">
+                      </div>
+                      <small>User-Name</small>
+                  </div>
+              </ion-col>
+              <ion-col col-8>
+                  <h2 class="header-title-2">App Name</h2>
+
+              </ion-col>
+              <ion-col col-2>
+                  <div class="menu-list-img">
+                      <img src="assets/imgs/list-icon.png">
+                  </div>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content>
+  <div class="pad-page-10 mrg-t-15">
+      <ion-grid class="ion-no-padding">
+          <ion-row>
+              <ion-slides class="slider-box" pager="true" options="options">
+
+                  <ion-slide class=" size-box-slider">
+                      <ion-card>
+
+
+                          <ion-img src="assets/imgs/slider-img-1.png"></ion-img>
+
+
+                      </ion-card>
+                  </ion-slide>
+
+                  <ion-slide class=" size-box-slider">
+                      <ion-card>
+
+
+                          <ion-img src="assets/imgs/slider-img-1.png"></ion-img>
+
+
+                      </ion-card>
+                  </ion-slide>
+
+
+                  <ion-slide class=" size-box-slider">
+                      <ion-card>
+
+
+                          <ion-img src="assets/imgs/slider-img-1.png"></ion-img>
+
+
+                      </ion-card>
+                  </ion-slide>
+
+
+                  <ion-slide class=" size-box-slider">
+                      <ion-card>
+
+
+                          <ion-img src="assets/imgs/slider-img-1.png"></ion-img>
+
+
+                      </ion-card>
+                  </ion-slide>
+
+
+
+
+              </ion-slides>
+
+          </ion-row>
+      </ion-grid>
+  </div>
+
+  <div class="bg-blue">
+      <h3 class="title-bg-blue">Upcoming News</h3>
+  </div>
+
+
+
+  <div class="pad-page-10 mrg-t-15">
+      <ion-grid class="">
+          <ion-row>
+              <div class="new-box">
+                  <div class="new-img-box">
+                      <div class="img-box">
+                          <img src="assets/imgs/new-img-1.jpg">
+                      </div>
+
+                      <div class="new-cuntent-box">
+                          <h3>News Heading title</h3>
+                          <div class="date-box"> <img src="assets/imgs/calendar-icon.png"><small> 30/09/2020</small></div>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse luctus dui sed leo cursus dignissim. <span>Read More</span> </p>
+
+                      </div>
+                  </div>
+
+              </div>
+              <div class="new-box">
+                  <div class="new-img-box">
+                      <div class="img-box">
+                          <img src="assets/imgs/new-img-1.jpg">
+                      </div>
+
+                      <div class="new-cuntent-box">
+                          <h3>News Heading title</h3>
+                          <div class="date-box"> <img src="assets/imgs/calendar-icon.png"><small> 30/09/2020</small></div>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse luctus dui sed leo cursus dignissim. <span>Read More</span> </p>
+
+                      </div>
+                  </div>
+
+              </div>
+              <div class="new-box">
+                  <div class="new-img-box">
+                      <div class="img-box">
+                          <img src="assets/imgs/new-img-1.jpg">
+                      </div>
+
+                      <div class="new-cuntent-box">
+                          <h3>News Heading title</h3>
+                          <div class="date-box"> <img src="assets/imgs/calendar-icon.png"><small> 30/09/2020</small></div>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse luctus dui sed leo cursus dignissim. <span>Read More</span> </p>
+
+                      </div>
+                  </div>
+              </div>
+          </ion-row>
+      </ion-grid>
+
+
+  </div>
+  <div class="bg-blue mrg-t-10">
+      <h3 class="contact-info">Contact Us - judymoodysolutions.com</h3>
+  </div>
+  <div class="bg-gray mrg-t-10">
+      <h3 class="email-info">Email Id - judymoodysolutions@gmail.com</h3>
+  </div>
+
+  <div class="mrg-t-40"></div>
+
+  <button ion-button (click)="logout()">logout
+    <ion-icon  slot="icon-only" name="md-log-out"></ion-icon>
+  </button>
 </ion-content>
+
+

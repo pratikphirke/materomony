@@ -1,17 +1,17 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      slider
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
+<ion-content pdding>
+
+  <button ion-button round center (click)="imgpicker()"> get img</button>
+  <ion-list *ngFor="let img of photos">
     <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
+      <img src="{{img}}"/>
     </ion-item>
   </ion-list>
 </ion-content>

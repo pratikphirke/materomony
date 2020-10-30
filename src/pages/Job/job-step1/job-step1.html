@@ -1,0 +1,58 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>job-step1</ion-title>
+  </ion-navbar>
+</ion-header>
+
+  
+<ion-content padding>
+
+
+  <div class="login-box-section">
+      <div class="login-box">
+          <div class="logo-box">
+              <img src="assets/imgs/logo-1.jpg">
+          </div>
+
+          <form [formGroup]="jobDetailsForm" (ngSubmit)="submitDetails(jobDetailsForm.value)">
+            <ion-list class="login-user-info">
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                    </ion-label>
+                    <ion-input type="text" placeholder="Experience" formControlName="experience"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                    </ion-label>
+                    <ion-input type="text" placeholder=" Current company details"  formControlName="company"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left name="mail"></ion-icon>
+                    </ion-label>
+                    <ion-input type="text" placeholder="Achievements"  formControlName="achievements"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                    </ion-label>
+                    <ion-input type="text" placeholder="Awards"  formControlName="awards"></ion-input>
+                </ion-item>
+
+              
+
+            </ion-list>
+
+          <button ion-button round center class="login-btn">Sign Up</button>
+        </form>
+      </div>
+  </div>
+
+
+</ion-content>

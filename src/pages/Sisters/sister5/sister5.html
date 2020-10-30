@@ -1,0 +1,95 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Sister5 Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="login-box-section">
+    <div class="login-box">
+    <div class="logo-box">
+            <img src="assets/imgs/logo-1.jpg">
+        </div>
+
+        <form (ngSubmit)="SaveSistersInfo(register.value)" [formGroup]="register">
+          <ion-list class="login-user-info">
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  placeholder=" Sister Name" formControlName="noofSister_name" required></ion-input>
+        </ion-item>
+        <ion-item no-lines
+          *ngIf="register.get('noofSister_name').hasError('required') && register.get('noofSister_name').touched">
+        <div class="error">
+          Sister1  Name is required
+        </div>
+       </ion-item>
+       <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+        </ion-label>
+        <ion-input type="date" placeholder="Sister DOB"  [(ngModel)]="birthdate"  formControlName="noofSister_dob" displayFormat="DD-MM-YYYY"></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="register.get('noofSister_dob').hasError('required') && register.get('noofSister_dob').touched">
+        <div class="error">
+          Select Sister1 Birthdate
+        </div>
+        </ion-item>
+
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+        </ion-label>
+        <ion-input type="number" placeholder="Sister1 Age" formControlName="noofSister_age" value="{{ageFromDateOfBirthday(birthdate)}}" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+        </ion-label>
+        <ion-select interface="popover" placeholder="Sister1 Marital Status" formControlName="noofSister_marital_status" s required>
+          
+            <ion-option value="UnMarried">UnMarried				
+            </ion-option>
+            <ion-option value="Divorse">Divorse / Vidows				
+            </ion-option>
+            <ion-option value="Married">Married				
+            </ion-option>
+            <ion-option value="NeverMarried">Never Married				
+            </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item no-lines *ngIf="register.get('noofSister_marital_status').hasError('required') && register.get('noofSister_marital_status').touched">
+      <div class="error">
+        Select Marital Status
+      </div>
+      </ion-item>
+   
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+        </ion-label>
+        <ion-input type="number" placeholder="Sister1 Mobile No" formControlName="noofSister_mobile" required></ion-input>
+    </ion-item>
+    <ion-item no-lines
+    *ngIf="( register.get('noofSister_mobile').hasError('minlength') || register.get('noofSister_mobile').hasError('pattern') ||register.get('noofSister_mobile').hasError('required') ) && register.get('noofSister_mobile').touched">
+    <div class="error"
+      *ngIf="register.get('noofSister_mobile').hasError('required') && register.get('noofSister_mobile').touched">
+      Please input your mobile1
+    </div>
+    <div class="error"
+      *ngIf="register.get('noofSister_mobile').hasError('pattern') && register.get('noofSister_mobile').touched">
+      mobile No invalid
+    </div>
+  </ion-item>
+  
+      </ion-list> 
+        <button ion-button round center class="login-btn" type="submit">Save</button>
+    </form>
+</div>
+</div>
+
+</ion-content>

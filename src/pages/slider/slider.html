@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      slider
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-icon float-right (click)="closeModel()" ios="ios-close-circle" md="md-close-circle"></ion-icon>
+  <div class="slider-content">
+      <div class="">
+          <ion-list class="slider-info opt-slide">
+              <form (ngSubmit)="submitAccount(account.value)" [formGroup]="account">
+               
+                
+    
+                  <ion-item class="document-item">
+                      <ion-label stacked>Photo ID (selfie) </ion-label>
+                  </ion-item>
+                  <ion-row class="gender-box">
+                      <ion-col (click)="getPhoto('selfie')" *ngIf="selfie" col-4>
+                          <div class="document-img-box">
+                              <img [src]="selfie">
+                          </div>
+                      </ion-col>
+                      <ion-col *ngIf="!selfie" (click)="getPhoto('selfie')" col-4>
+                          <div class="document-img-box dotted-border">
+                              <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
+                          </div>
+                      </ion-col>
+                  </ion-row>
+                  <ion-input formControlName="selfie" [(ngModel)]="selfie" type="text" hidden></ion-input>
+                  <ion-item no-lines
+                      *ngIf="account.get('selfie').hasError('required') && account.get('selfie').touched">
+                      <div class="error">
+                          Photo ID (selfie) is required
+                      </div>
+                  </ion-item>
+                  <ion-item class="converted-btn-box">
+                      <button ion-button class="converted-btn">
+                          Submit
+                      </button>
+                  </ion-item>
+              </form>
+          </ion-list>
+      </div>
+  </div>
+</ion-content>

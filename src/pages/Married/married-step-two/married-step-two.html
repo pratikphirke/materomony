@@ -1,0 +1,135 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Married Register Step two</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="login-box-section">
+    <div class="login-box">
+    <div class="logo-box">
+            <img src="assets/imgs/logo-1.jpg">
+        </div>
+
+        <form (ngSubmit)="marrageRegister_Steptwo(register.value)" [formGroup]="register">
+          <ion-list class="login-user-info">
+          
+        <ion-item>
+          <ion-label>
+              <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+          </ion-label>
+          <ion-input type="text"  placeholder="Brother N0" formControlName="noofBrothers" required></ion-input>
+          <!--
+          <ion-select interface="popover" placeholder="No of Brothers" formControlName="noofBrothers">
+           <optgroup>
+            <ion-option>
+              <ion-input type="text"  placeholder="Brother Name" formControlName="noofBrothers_name" required></ion-input>
+            </ion-option>
+            <ion-option>
+            <ion-input type="date" placeholder="Brother DOB"  formControlName="noofBrothers_dob" required></ion-input>
+          </ion-option>
+          <ion-option>
+            <ion-input type="number"  placeholder="Brother Age auto" formControlName="noofBrothers_age" readonly></ion-input>
+          </ion-option>
+            <ion-select interface="popover" placeholder="Brother Marital Status" formControlName="noofBrothers_marital_status" required>
+              <ion-option value="NeverMarried">Never Married				
+              </ion-option>
+              <ion-option value="Married">Married				
+              </ion-option>
+              <ion-option value="Divorse">Divorse / Vidows				
+              </ion-option>
+          </ion-select>
+          <ion-input type="number" placeholder="Brother Mobile No" formControlName="noofBrothers_mobile" required></ion-input>
+        </optgroup>
+          </ion-select>
+          -->
+        </ion-item>
+        <ion-item no-lines *ngIf="register.get('noofBrothers').hasError('required') && register.get('noofBrothers').touched">
+        <div class="error">
+          plz fill all Brother info
+        </div>
+        </ion-item>
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  placeholder="Sister N0" formControlName="noofSister" required></ion-input>
+            <!--<ion-select interface="popover" placeholder="No of Sister" formControlName="noofSister">
+              <ion-input type="text"  placeholder="Sister Name" formControlName="noofSister_name" required></ion-input>
+              <ion-input type="date" placeholder="Sister DOB"  formControlName="noofSister_dob" required></ion-input>
+              <ion-input type="number"  placeholder="Sister Age auto" formControlName="noofSister_age" readonly></ion-input>
+              <ion-select interface="popover" placeholder="Sister Marital Status" formControlName="noofSister_marital_status" required>
+                <ion-option value="NeverMarried">Never Married				
+                </ion-option>
+                <ion-option value="Married">Married				
+                </ion-option>
+                <ion-option value="Divorse">Divorse / Vidows				
+                </ion-option>
+            </ion-select>
+            <ion-input type="number" placeholder="Sister Mobile No" formControlName="noofSister_mobile" required></ion-input>
+            </ion-select>-->
+          </ion-item>
+          <ion-item no-lines *ngIf="register.get('noofSister').hasError('required') && register.get('noofSister').touched">
+          <div class="error">
+            plz fill all Sister info
+          </div>
+          </ion-item>
+
+          <ion-col col-12>
+            <ion-label>Manglik</ion-label>
+            <ion-list  formControlName="manglik" radio-group class="payment-redio">
+              <ion-item>
+                <ion-label>Yes</ion-label>
+                <ion-radio value="Y" checked></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio value="N"></ion-radio>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-item no-lines *ngIf="register.get('manglik').hasError('required') && register.get('manglik').touched">
+            <div class="error">
+              Select Manglik status
+            </div>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  placeholder="Kul Devi" formControlName="kuldevi" required></ion-input>
+          </ion-item>
+          <ion-item no-lines
+          *ngIf="register.get('kuldevi').hasError('required') && register.get('kuldevi').touched">
+          <div class="error">
+            Kul Devi is required
+          </div>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  placeholder="Gotra" formControlName="gotra" required></ion-input>
+          </ion-item>
+          <ion-item no-lines
+          *ngIf="register.get('gotra').hasError('required') && register.get('gotra').touched">
+          <div class="error">
+            Gotra is required
+          </div>
+          </ion-item>
+
+         
+
+      </ion-list> 
+        <button ion-button round center class="login-btn" type="submit">NEXT</button>
+    </form>
+</div>
+</div>
+
+</ion-content>

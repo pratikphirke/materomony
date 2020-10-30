@@ -1,5 +1,9 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
+<ion-tabs  id="tabs">
+<!--swipeTab (ionChange)="transition($event)" (onTabChange)="onTabChange($event)" #myTabs-->
+  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home" enabled="{{tabsEnabled}}"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Match" tabIcon="heart" enabled="{{tabsEnabled}}"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Chat" tabIcon="chatbubbles"  tabBadge="3" tabBadgeStyle="danger" enabled="{{tabsEnabled}}"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="People" tabIcon="people" enabled="{{tabsEnabled}}"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="Settings" tabIcon="settings" enabled="{{tabsEnabled}}"></ion-tab>
+
 </ion-tabs>

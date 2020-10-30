@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>business-details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <div class="login-box-section">
+      <div class="login-box">
+          <div class="logo-box">
+              <img src="assets/imgs/logo-1.jpg">
+          </div>
+
+          <form [formGroup]="businessForm" (ngSubmit)="submitDetails(businessForm.value)">
+            <ion-list class="login-user-info">
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                    </ion-label>
+                    <ion-input type="text" placeholder="Company Name"  formControlName="company"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+                    </ion-label>
+                    <ion-input type="text" placeholder="Office Address"  formControlName="office_address"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left name="mail"></ion-icon>
+                    </ion-label>
+                    <ion-input type="email" placeholder="Email Id"  formControlName="email"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                    </ion-label>
+                    <ion-input type="number" placeholder="Mobile 1"  formControlName="mobile1"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                  </ion-label>
+                  <ion-input type="number" placeholder="Mobile 2"  formControlName="mobile2"></ion-input>
+                </ion-item> 
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text" placeholder="GSTIN"  formControlName="gstin"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                    </ion-label>
+                    <ion-select interface="popover" placeholder="Business Type"  formControlName="businessType">
+                        <ion-option value="Production">Production</ion-option>
+                        <ion-option value="Services">Services</ion-option>
+
+                    </ion-select>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Products/Services"  formControlName="products">
+                      <ion-option value="less than 1 Year">Less than 1 year</ion-option>
+                      <ion-option value="1 year">1 Year</ion-option>
+                      <ion-option value="2 year">2 Year</ion-option>
+
+                  </ion-select>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text" placeholder="About" formControlName="about"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Annual Turnover"  formControlName="turnover">
+                    <ion-option value="In crore">In Crore</ion-option>
+                    <ion-option value="In Lac">In Lac</ion-option>
+                      <ion-option value="In Thousand">In Thousand</ion-option>
+                </ion-select>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label>
+                    Social Media Link
+                </ion-label>
+                </ion-item>
+                
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text" placeholder="website"  formControlName="website"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text" placeholder="LinkedIn Profile Url"  formControlName="linkedin"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text" placeholder="Facebook Profile Url"  formControlName="facebook"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-call" md="md-call"></ion-icon>
+                  </ion-label>
+                  <ion-input type="text" placeholder="Instagram Profile Url"  formControlName="instagram"></ion-input>
+                </ion-item>
+
+            </ion-list>
+
+          <button ion-button round center class="login-btn">Sign Up</button>
+        </form>
+      </div>
+  </div>
+
+
+</ion-content>

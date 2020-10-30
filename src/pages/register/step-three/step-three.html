@@ -1,0 +1,148 @@
+<!--<ion-header>
+  <ion-navbar>
+    <ion-title>Step Three</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+<ion-content padding>
+
+
+  <div class="login-box-section">
+      <div class="login-box">
+       <!--   <div class="logo-box">
+              <img src="assets/imgs/logo-1.jpg">
+          </div>
+-->
+          <form (ngSubmit)="Register_StepThree(register.value)" [formGroup]="register">
+          <ion-list class="login-user-info">
+         
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
+        </ion-label>
+     
+
+        <ion-input type="text" placeholder=" Select Date of Birth" class="textbox-n" 
+        onfocus="(this.type='date')"  [(ngModel)]="birthdate" id="date"
+         formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
+      </ion-item>
+      <div no-lines *ngIf="register.get('birthdate').hasError('required') && register.get('birthdate').touched">
+        <div class="error">
+          Select Your Birth Date
+        </div>
+      </div>
+
+        <ion-item *ngIf="birthdate">
+              <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+              </ion-label>
+              <ion-input type="text" placeholder="Age" formControlName="age"
+              value="{{ageFromDateOfBirthday(birthdate)}}" readonly></ion-input>
+        </ion-item>
+
+          
+
+           
+    <!--
+
+        <ion-label>
+            <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Age" formControlName="age" class="textbox-n" 
+        onfocus="(this.type='number')"  value="{{ageFromDateOfBirthday(birthdate)}}" readonly></ion-input>
+           
+
+          <ion-input type="number"placeholder="Age" formControlName="age"
+        onchange="this.className=(this.value!==''?'has-value':'')"
+        value="{{ageFromDateOfBirthday(birthdate)}}" readonly ></ion-input>
+
+        <span *ngIf="calAge== 0; else elseBlock">           
+          <ion-input type="number" placeholder="Age" formControlName="age"  readonly ></ion-input>
+        </span>
+        <ng-template #elseBlock>
+          <ion-input type="number" placeholder="Age" formControlName="age"
+                value="{{ageFromDateOfBirthday(birthdate)}}"  readonly ></ion-input>
+        </ng-template>
+  -->
+         
+
+
+
+ 
+
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+        </ion-label>
+        <ion-select interface="popover" placeholder="Gender" formControlName="gender">
+            <ion-option value="M">Male</ion-option>
+            <ion-option value="F">Female</ion-option>
+            <ion-option value="O">Other</ion-option>
+        </ion-select>
+    </ion-item>
+    <div no-lines *ngIf="register.get('gender').hasError('required') && register.get('gender').touched">
+      <div class="error">
+        Select Gender
+      </div>
+    </div>
+
+        <ion-item>
+          <ion-label>
+              <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+          </ion-label>
+          <ion-input type="text" placeholder="Religion" formControlName="religion"></ion-input>
+      </ion-item>
+      <div no-lines *ngIf="register.get('religion').hasError('required') && register.get('religion').touched">
+        <div class="error">
+          Fill Details Religion
+        </div>
+      </div>
+          
+      <ion-item>
+        <ion-label>
+            <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Caste" formControlName="caste"></ion-input>
+    </ion-item>
+    <div no-lines *ngIf="register.get('caste').hasError('required') && register.get('caste').touched">
+      <div class="error">
+        FIll Details Caste
+      </div>
+    </div>
+
+
+    <ion-item>
+      <ion-label>
+          <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+      </ion-label>
+      <ion-select [(ngModel)]="SelecteLang" formControlName="langknown" placeholder="Select Language"  multiple="true">
+        <ion-option  *ngFor="let lang of languages" [value] ="lang.id">{{lang.lang_name}}</ion-option>
+      </ion-select>
+      You Selected = {{SelecteLang}}
+    </ion-item>
+
+    <div no-lines *ngIf="register.get('langknown').hasError('required') && register.get('langknown').touched">
+    <div class="error">
+      Add language
+    </div>
+    </div>
+
+
+            </ion-list>
+        
+        
+          <ion-row>
+            <ion-col>
+              <button ion-button start round center (click)="goBack()" class="login-btn">Prev</button>
+            </ion-col>
+            <ion-col>
+              <button ion-button round center type="submit" class="login-btn">Next</button>
+            </ion-col>
+          </ion-row>
+        <!--<button ion-button round center class="login-btn" type="submit">Next</button>-->
+        </form>
+      </div>
+  </div>
+
+
+</ion-content>

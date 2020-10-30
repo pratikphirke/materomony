@@ -1,0 +1,77 @@
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1.5em;
+      height: 1.5em;
+      margin-top: 0px;
+      margin-right: 7px;
+        // max-width: 30px;
+        //border: 0;
+      float: right;
+    }
+   
+    &[class*="md-refresh"] {
+      mask-image: url(../assets/icon/md-refresh.svg);
+    }
+    &[class*="custom-ellipsis-horizontal"] {
+      mask-image: url(../assets/icon/ellipsis-horizontal.svg);
+    }
+    &[class*="custom-person-circle-sharp"] {
+        mask-image: url(../assets/icon/person-circle-sharp.svg);
+        font-size: x-large;
+    }
+    &[class*="custom-exit-outline"] {
+        mask-image: url(../assets/icon/exit-outline.svg);
+    }
+    &[class*="custom-trash"] {
+        mask-image: url(../assets/icon/trash.svg);
+    }
+    &[class*="custom-information-circle-outline"] {
+        mask-image: url(../assets/icon/information-circle-outline.svg);
+    }
+    &[class*="custom-person-circle-outline"] {
+      mask-image: url(../assets/icon/person-circle-outline.svg);
+    }
+    &[class*="custom-document-text-outline"] {
+      mask-image: url(../assets/icon/document-text-outline.svg);
+    }
+    &[class*="custom-share-social-sharp"] {
+      mask-image: url(../assets/icon/share-social-sharp.svg);
+    }
+    &[class*="custom-share-social"] {
+      mask-image: url(../assets/icon/share-social.svg);
+    }
+    &[class*="custom-call"] {
+      mask-image: url(../assets/icon/call.svg);
+    }
+    &[class*="custom-chevron-up-circle-outline"] {
+      mask-image: url(../assets/icon/chevron-up-circle-outline.svg);
+    }
+    &[class*="custom-burger"] {
+      mask-image: url(../assets/icon/burger.svg);
+    }
+    &[class*="custom-cocktail"] {
+      mask-image: url(../assets/icon/cocktail.svg);
+    }
+    &[class*="custom-cookies"] {
+      mask-image: url(../assets/icon/cookies.svg);
+    }
+    &[class*="custom-dish"] {
+      mask-image: url(../assets/icon/dish.svg);
+    }
+    &[class*="custom-noodle"] {
+      mask-image: url(../assets/icon/noodle.svg);
+    }
+    &[class*="custom-pizza"] {
+      mask-image: url(../assets/icon/pizza.svg);
+
+    }&[class*="custom-shapes"] {
+      mask-image: url(../assets/icon/shapes.svg);
+    }
+    &[class*="custom-taco"] {
+      mask-image: url(../assets/icon/taco.svg);
+    }
+  }
