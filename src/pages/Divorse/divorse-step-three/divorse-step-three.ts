@@ -91,10 +91,13 @@ childrensArray = [];
         this.dataArray['height'] = data.height,
         this.dataArray['weight'] = data.weight,
         this.dataArray['skin'] = data.skin,
-        this.dataArray['noofChildren'] = data.noofChildren.val,
-        this.dataArray['childrensArray'] = this.childrensArray,
+        this.dataArray['totalChildrens'] = data.noofChildren.val,
+        this.dataArray['childrens'] = this.childrensArray,
         this.dataArray['about'] = data.about
 
+
+
+        
          console.log('---------------divorse 3-----------',this.dataArray)
         console.log('*****Select Job**** ',this.jobselect)
 

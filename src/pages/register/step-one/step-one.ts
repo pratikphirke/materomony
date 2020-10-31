@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Base64 } from '@ionic-native/base64';
 import { Camera } from '@ionic-native/camera';
 import { File, FileEntry } from '@ionic-native/file';
+import { AlertController } from 'ionic-angular';
 import { ActionSheetController, NavController, NavParams } from 'ionic-angular';
 import { DefineProvider } from '../../../providers/define/define';
 import { ServiceProvider } from '../../../providers/service/service';
@@ -32,7 +33,7 @@ export class StepOnePage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public api: ServiceProvider,
     public DefineProvider: DefineProvider,
-    public actionSheetCtrl: ActionSheetController,
+    public actionSheetCtrl: ActionSheetController, public alertCtrl : AlertController,
     private base64: Base64, private camera: Camera, private file: File,
     private sanitizer: DomSanitizer,
     public splash: SplashProvider) {
@@ -124,11 +125,34 @@ export class StepOnePage {
         });
       }
 
+   /*   deletePhoto(index){
+        let confirm = this.alertCtrl.create({
+          title: 'Sure you want to delete this photo?',
+          message: ' There is NO undo!',
+          buttons: [
+            {
+              text: 'No',
+              handler: () => {
+                console.log('Disagree clicked');
+              }
+            }, {
+              text: 'Yes',
+              handler: () => {
+                
+                this.selfie.splice(index, 1);
+                console.log('Agree clicked',this.selfie);
+              }
+            }
+          ]
+        });
+      confirm.present();
+  
+    }*/
   Register_StepOne(data) {
 
    
        if (this.register.valid) {
-        //console.log('Selfi ----',this.selfie.changingThisBreaksApplicationSecurity);
+        console.log('Selfi ----',this.selfie.changingThisBreaksApplicationSecurity);
      /*
                      this.dataArray = [{
               profile: data.selfie,
@@ -139,14 +163,14 @@ export class StepOnePage {
              mobil2: data.mobil2,
             }]
               */
-       
-           //  this.dataArray['photo'] = this.selfie.changingThisBreaksApplicationSecurity,
+  
+             this.dataArray['photo'] = this.selfie.changingThisBreaksApplicationSecurity,
              this.dataArray['firstname'] = data.firstname,
              this.dataArray['middlename'] = data.middlename,
              this.dataArray['lastname'] = data.lastname,
              this.dataArray['email'] = data.email,
              this.dataArray['phone1'] = data.mobile1,
-             this.dataArray['phone2'] = data.mobile2
+             this.dataArray['phone2'] = data.mobile2,
           
           //call country api here
 

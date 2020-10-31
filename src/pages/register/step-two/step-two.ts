@@ -98,13 +98,15 @@ export class StepTwoPage {
         */ 
 
 
+
       this.dataArray['country'] = data.country.id,
       this.dataArray['state'] = data.state.id,
       this.dataArray['city'] = data.city.id,
-      this.dataArray['Present_Address'] = data.Present_Address,
+      this.dataArray['present_address'] = data.Present_Address,
       this.dataArray['permanent_address'] = data.Permenent_Address,
      
-  
+    
+      
      console.log('--------------form data2222----------------- ',this.dataArray);
       this.navCtrl.push(StepThreePage, {dataArray: this.dataArray});
        /* this.api.signupFinal(this.dataArray).subscribe(res => {

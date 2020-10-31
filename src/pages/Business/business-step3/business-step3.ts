@@ -53,7 +53,9 @@ export class BusinessStep3Page {
       this.dataArray['linkedin'] = data.linkedin,
       this.dataArray['facebook'] = data.facebook,
       this.dataArray['instagram'] = data.instagram
-   
+
+
+
 
      console.log('---------------BusinessStep3-----------',this.dataArray)
         //  this.navCtrl.push(TabsPage, {dataArray: this.dataArray});
@@ -68,7 +70,8 @@ export class BusinessStep3Page {
         
           if(res.flag == 6) {
             this.splash.toast(res.message);
-            let formdata = new FormData();
+            this.navCtrl.push(TabsPage, {dataArray: this.dataArray});
+        /*    let formdata = new FormData();
             formdata.append('user_id', res.user_id);
 
             this.api.getAccountDetails(this.dataArray).subscribe(res => {
@@ -79,7 +82,7 @@ export class BusinessStep3Page {
                 this.splash.dismiss();
                  this.navCtrl.push(TabsPage, {dataArray: this.dataArray});
               }
-            })
+            })*/
           }
           if(res.flag == 7) {
             this.splash.toast('Registration Failed');
@@ -97,5 +100,5 @@ export class BusinessStep3Page {
                 })
               }
            }
+          }
 
-}

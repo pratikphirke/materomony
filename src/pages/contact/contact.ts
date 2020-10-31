@@ -18,6 +18,7 @@ export class ContactPage {
   marriageForm: FormGroup;
   otherpics: any;
   allImages = [];
+  finalimgs: any;
 
   constructor(
     public navCtrl: NavController,
@@ -40,10 +41,7 @@ export class ContactPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MarriageStep1Page');
-    this.dataArray = this.navParams.get('dataArray');
-
-    console.log('---------------Data at Marriage Step1----------------- ',this.dataArray)
+  
   }
 
   public getPhoto() {
@@ -113,7 +111,12 @@ export class ContactPage {
   submitDetails(data) {
     if(this.marriageForm.valid) {
       console.log('otherpiccs ----',this.otherpics.changingThisBreaksApplicationSecurity);
-      console.log('otherpiccs ----',this.allImages);
+      for (var i = 0; i < this.allImages.length; i++) {
+        this.finalimgs =this.allImages[i].changingThisBreaksApplicationSecurity;
+
+     }
+      console.log('FINAL IMGS----- ' + this.finalimgs);
+      
     //  this.dataArray['otherpics'] = this.allImages,
 
       this.dataArray['fathername'] = data.fathername,

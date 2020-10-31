@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { GlobleServiceProvider } from '../providers/globle-service/globle-service';
+import { LoginPage } from '../pages/login/login';
 
 
 
@@ -12,8 +13,8 @@ import { GlobleServiceProvider } from '../providers/globle-service/globle-servic
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage; 
-  //rootPage:any = LoginPage;
+  //rootPage:any = TabsPage; 
+  rootPage:any = LoginPage;
   user_id: string;
 // rootPage:any = SliderPage;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
@@ -35,8 +36,8 @@ export class MyApp {
       }
       else {
         window.localStorage.clear();
-     this.rootPage = TabsPage;
-   // this.rootPage = LoginPage;
+     //this.rootPage = TabsPage;
+   this.rootPage = LoginPage;
       }
 
 

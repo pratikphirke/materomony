@@ -42,9 +42,11 @@ export class BusinessStep2Page {
       this.dataArray['mobile1'] = data.mobile1,
       this.dataArray['mobile2'] = data.mobile2,
       this.dataArray['gstin'] = data.gstin,
-      this.dataArray['businessType'] = data.businessType,
+      this.dataArray['business_type'] = data.businessType,
       this.dataArray['products'] = data.products
-   
+
+
+
 
      console.log('---------------BusinessStep2-----------',this.dataArray)
           this.navCtrl.push(BusinessStep3Page, {dataArray: this.dataArray});

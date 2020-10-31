@@ -147,11 +147,13 @@ export class UnmarriedStep2Page {
 
     if (this.register.valid) {
 
-     
-      this.dataArray['noofBrothers'] = data.noofBrothers.val,
-      this.dataArray['brothersArray'] = this.brothersArray,
-      this.dataArray['noofSister'] = data.noofSister.val,
-      this.dataArray['sistersArray'] = this.sistersArray,
+       
+
+
+      this.dataArray['totalBrothers'] = data.noofBrothers.val,
+      this.dataArray['brothers'] = this.brothersArray,
+      this.dataArray['totalSisters'] = data.noofSister.val,
+      this.dataArray['siters'] = this.sistersArray,
       this.dataArray['manglik'] = data.manglik,
       this.dataArray['kuldevi'] = data.kuldevi,
       this.dataArray['gotra'] = data.gotra

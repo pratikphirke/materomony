@@ -16,127 +16,18 @@
         <form (ngSubmit)="Register_Step1(register.value)" [formGroup]="register">
           <ion-list class="login-user-info">
             
-          <ion-row class="gender-box">
-
-          <ion-col>
-            <ion-col (click)="getPhoto('otherpic1')" *ngIf="otherpic1" col-4>
-                <div class="document-img-box">
-                    <img [src]="otherpic1">
-                </div>
-            </ion-col>
-            <ion-col *ngIf="!otherpic1" (click)="getPhoto('otherpic1')" col-4>
-                <div class="document-img-box dotted-border">
-                    <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
-                </div>
-            </ion-col>
-          </ion-col>
-
-          <ion-col>
-            <ion-col (click)="getPhoto('otherpic2')" *ngIf="otherpic2" col-4>
-                <div class="document-img-box">
-                    <img [src]="otherpic2">
-                </div>
-            </ion-col>
-            <ion-col *ngIf="!otherpic2" (click)="getPhoto('otherpic2')" col-4>
-                <div class="document-img-box dotted-border">
-                    <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
-                </div>
-            </ion-col>
-          </ion-col>
-
-          <ion-col>
-            <ion-col (click)="getPhoto('otherpic3')" *ngIf="otherpic3" col-4>
-                <div class="document-img-box">
-                    <img [src]="otherpic3">
-                </div>
-            </ion-col>
-            <ion-col *ngIf="!otherpic3" (click)="getPhoto('otherpic3')" col-4>
-                <div class="document-img-box dotted-border">
-                    <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
-                </div>
-            </ion-col>
-          </ion-col>
-
-          <ion-col>
-            <ion-col (click)="getPhoto('otherpic4')" *ngIf="otherpic4" col-4>
-                <div class="document-img-box">
-                    <img [src]="otherpic4">
-                </div>
-            </ion-col>
-            <ion-col *ngIf="!otherpic4" (click)="getPhoto('otherpic4')" col-4>
-                <div class="document-img-box dotted-border">
-                    <ion-icon ios="ios-add-circle" md="md-add-circle" class="add-img-icon"></ion-icon>
-                </div>
-            </ion-col>
-          </ion-col>
-        </ion-row>
-
-        <ion-input formControlName="otherpic1" [(ngModel)]="otherpic1" type="text" hidden></ion-input>
-        <ion-input formControlName="otherpic2" [(ngModel)]="otherpic2" type="text" hidden></ion-input>
-        <ion-input formControlName="otherpic3" [(ngModel)]="otherpic3" type="text" hidden></ion-input>
-        <ion-input formControlName="otherpic4" [(ngModel)]="otherpic4" type="text" hidden></ion-input>
-        <div no-lines
-            *ngIf="register.get('otherpic1').hasError('required') && register.get('otherpic1').touched &&
-            register.get('otherpic2').hasError('required') && register.get('otherpic2').touched &&
-            register.get('otherpic3').hasError('required') && register.get('otherpic3').touched &&
-            register.get('otherpic4').hasError('required') && register.get('otherpic4').touched">
-            <div class="error">
-              Other Photos is required
-            </div>
-        </div>
-        <!--
-            <div class="menuLogo">
-              <img [src]="url">
-              <img [src]="url">
-              <img [src]="url">
-              <img [src]="url">
-              <input type="file"  formControlName="profilepic" id="profilepic" class="inputfile" (change)="UploadImage($event)" >
-             <label for="profilepic" class="upload">
-              <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
-            </label>
-          </div>
-         
-        <ion-item no-lines
-         *ngIf="register.get('profilepic').hasError('required') && register.get('profilepic').touched">
-            <div class="error">
-              profile pic is required
-            </div>
-         </ion-item>
--->
-             <!-- 
-  <div class="menuLogo ">
-<img  [src]="url" />
-<ion-icon name="camera" (click)="UploadImage()" style="color:#fff !important;" class="upload-img">
-</ion-icon>
-</div>
-
- <ion-item>
-      <ion-label>
-          <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
-      </ion-label>
-      <ion-input type="text"  placeholder="upload Other pic" formControlName="otherpics" required></ion-input>
-    </ion-item>
-    <ion-item no-lines
-          *ngIf="register.get('otherpics').hasError('required') && register.get('otherpics').touched">
-    <div class="error">
-      other pics is required
-    </div>
-</ion-item>
-        
-
-          <ion-item>
-            <ion-label>
-                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
-            </ion-label>
-            <ion-input type="text"  placeholder="Mother Name" formControlName="mothername" required></ion-input>
-          </ion-item>
-          <div no-lines
-                *ngIf="register.get('mothername').hasError('required') && register.get('mothername').touched">
-          <div class="error">
-            Mother Name is required
-          </div>
-          </div>
-              -->
+            <span><h4>Add Other Photos</h4></span>
+            <button item-end ion-button (click)="otherPhotos()"><ion-icon name="add"></ion-icon></button> 
+  
+  
+            <ion-row class="gender-box">
+              <ion-col *ngFor="let img of photos; let id = index" col-4>
+                <div class="document-img-box dotted-border" ><!-- (click)="imgpicker(img)"-->
+                  <ion-icon name="md-close" (click)="deletePhoto(id)" ></ion-icon>
+                  <img src="{{img}}"/>
+              </div>
+              </ion-col>
+           </ion-row>
               
               
           <ion-item>

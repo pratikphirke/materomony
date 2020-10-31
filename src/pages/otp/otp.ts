@@ -139,6 +139,8 @@ export class OtpPage {
             this.navCtrl.push(TabsPage)
           }
         })
+      }else {
+        this.splash.toast('Invalid Otp');
       }
     }
   }

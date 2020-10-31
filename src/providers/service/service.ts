@@ -65,7 +65,7 @@ export class ServiceProvider {
     var result;
     console.log(formdata);
     
-    result = this.http.post(this.serverURl + this.signupFinalUrl, JSON.stringify(formdata)).map(this.checkApi());
+    result = this.http.post(this.serverURl + this.signupFinalUrl, (formdata)).map(this.checkApi());
    // console.log('registre service result',result);
     return result;
   }

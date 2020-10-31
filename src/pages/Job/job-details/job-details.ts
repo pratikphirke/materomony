@@ -58,7 +58,9 @@ export class JobDetailsPage {
 
       console.log('--------------Job data----------------- ',this.dataArray);
      // this.navCtrl.push(TabsPage, {dataArray: this.dataArray});
-        this.api.signupFinal(this.dataArray).subscribe(res => {
+
+  
+       this.api.signupFinal(this.dataArray).subscribe(res => {
           
           console.log('SIGNUP RESPONSE',res)
           if(res.flag == 0) {
@@ -69,10 +71,11 @@ export class JobDetailsPage {
         
           if(res.flag == 6) {
             this.splash.toast(res.message);
-            let formdata = new FormData();
-            formdata.append('user_id', res.user_id);
+          //  let formdata = new FormData();
+           // formdata.append('user_id', res.user_id);
 
-            this.api.getAccountDetails(this.dataArray).subscribe(res => {
+            this.navCtrl.push(TabsPage, {dataArray: this.dataArray});
+           /* this.api.getAccountDetails(this.dataArray).subscribe(res => {
             
               console.log('**ACCOUNRTDETAILS',res)
               if(res.status == 'true') {  
@@ -80,7 +83,7 @@ export class JobDetailsPage {
                 this.splash.dismiss();
                  this.navCtrl.push(TabsPage, {dataArray: this.dataArray});
               }
-            })
+            })*/
           }
           if(res.flag == 7) {
             this.splash.toast('Registration Failed');

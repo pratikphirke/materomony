@@ -6,7 +6,6 @@ import { ServiceProvider } from '../../../providers/service/service';
 import { SplashProvider } from '../../../providers/splash/splash';
 import { BusinessStep1Page } from '../../Business/business-step1/business-step1';
 import { DivorseStepOnePage } from '../../Divorse/divorse-step-one/divorse-step-one';
-import { HomePage } from '../../home/home';
 import { JobDetailsPage } from '../../Job/job-details/job-details';
 import { UnmarriedStep1Page } from '../../UnMarried/unmarried-step1/unmarried-step1';
 //@IonicPage()
@@ -99,125 +98,86 @@ export class StepFourPage {
 
 
 
-  
   Register_StepFour(data: any) {
-      if (this.register.valid) {
+    if (this.register.valid) {
 
+        this.dataArray['education'] = data.higheducation,
+        this.dataArray['annual_income'] = data.annual_income,
+        this.dataArray['hobbies'] = data.hobby,
+        this.dataArray['marital_status'] = data.marital_status,
+        this.dataArray['profession'] = data.profession,
 
-          this.dataArray['education'] = data.higheducation,
-          this.dataArray['annual_income'] = data.annual_income,
-          this.dataArray['hobbies'] = data.hobby,
-          this.dataArray['marital_status'] = data.marital_status,
-          this.dataArray['profession'] = data.profession
+   
 
+        console.log('--------------form data4----------------- ',this.dataArray);
 
-          console.log('--------------form data4----------------- ',this.dataArray);
-  
-        //  this.navCtrl.push(StepFourPage, {dataArray: this.dataArray});
-      /*  if(data.marital_status == 'Unmarried') {
+      //  this.navCtrl.push(StepFourPage, {dataArray: this.dataArray});
+
+     if(data.marital_status=="UnMarried"){
+          this.profselect = data.profession;
+        // console.log('SELECT STATUS',data.marital_status +'   SELECTED PROFESSION',this.profselect);
           this.navCtrl.push(UnmarriedStep1Page, {dataArray: this.dataArray,
-            jobselect: this.profselect});
+                                                  jobselect: this.profselect});
 
-        } else if(data.marital_status == 'Married') {
-         
-              if(data.profession == 'Job') {
-                this.navCtrl.push(JobDetailsPage, {dataArray: this.dataArray,
-                  jobselect: this.profselect});
-
-              } else if(data.profession == 'Unemployeed') {
-                this.navCtrl.push(HomePage,{dataArray: this.dataArray,
-                jobselect: this.profselect});
-
-              } else if(data.profession == 'Business') {
-                this.navCtrl.push(BusinessStep1Page,{dataArray: this.dataArray,
-                jobselect: this.profselect});
-              }
-        } else if(data.marital_status == 'Divorced') {
+     }else if(data.marital_status=="Divorse"){
+           this.profselect = data.profession;
+        
           this.navCtrl.push(DivorseStepOnePage, {dataArray: this.dataArray,
-            jobselect: this.profselect})
-*/
+                                                 jobselect: this.profselect})
 
-          ///--------------------------------------
-      if(data.marital_status=="UnMarried")
-            this.profselect = data.profession;
-          // console.log('SELECT STATUS',data.marital_status +'   SELECTED PROFESSION',this.profselect);
-            this.navCtrl.push(UnmarriedStep1Page, {dataArray: this.dataArray,
-                                                    jobselect: this.profselect});
+     }else if(data.marital_status=="Married" && data.profession=="Job"){
+           this.maritalStatusselect = data.marital_status;
+          
+           this.navCtrl.push(JobDetailsPage, {dataArray: this.dataArray,
+                                              maritalStatusselect: this.maritalStatusselect,
+                                              jobselect: this.profselect})
 
-       }else if(data.marital_status=="Divorced"){
-             this.profselect = data.profession;
-             
-            this.navCtrl.push(DivorseStepOnePage, {dataArray: this.dataArray,
-                                                   jobselect: this.profselect})
-
-       }else if(data.marital_status=="Married" && data.profession=="Job"){
-             this.maritalStatusselect = data.marital_status;
+     }else if(data.marital_status=="Married" && data.profession=="Business"){
+           this.maritalStatusselect = data.marital_status;
             
-             this.navCtrl.push(JobDetailsPage, {dataArray: this.dataArray,
+           this.navCtrl.push(BusinessStep1Page,  {dataArray: this.dataArray,
                                                 maritalStatusselect: this.maritalStatusselect,
                                                 jobselect: this.profselect})
 
-       }else if(data.marital_status=="Married" && data.profession=="Business"){
-             this.maritalStatusselect = data.marital_status;
-             
-             this.navCtrl.push(BusinessStep1Page,  {dataArray: this.dataArray,
-                                                  maritalStatusselect: this.maritalStatusselect,
-                                                  jobselect: this.profselect})
-
-      }else if(data.marital_status=="NeverMarried" && data.profession=="Job"){
-            this.maritalStatusselect = data.marital_status;
-           
-            this.navCtrl.push(JobDetailsPage, {dataArray: this.dataArray,
-                                                maritalStatusselect: this.maritalStatusselect,
-                                                jobselect: this.profselect})
-
-      }else if(data.marital_status=="NeverMarried" && data.profession=="Unemployed"){
-            this.maritalStatusselect = data.marital_status;
-           
-            this.navCtrl.push(HomePage, {dataArray: this.dataArray,
-                                                maritalStatusselect: this.maritalStatusselect,
-                                                jobselect: this.profselect})
-
-
-          
-
-        }else if(data.marital_status=="Married" && data.profession=="Unemployed"){
+    }else if(data.marital_status=="NeverMarried" && data.profession=="Job"){
           this.maritalStatusselect = data.marital_status;
          
-          this.navCtrl.push(HomePage, {dataArray: this.dataArray,
+          this.navCtrl.push(JobDetailsPage, {dataArray: this.dataArray,
                                               maritalStatusselect: this.maritalStatusselect,
                                               jobselect: this.profselect})
 
 
-        }else if(data.marital_status=="UnMarried" && data.profession=="Unemployed"){
-          this.maritalStatusselect = data.marital_status;
-         
-          this.navCtrl.push(UnmarriedStep1Page, {dataArray: this.dataArray,
-                                              maritalStatusselect: this.maritalStatusselect,
-                                              jobselect: this.profselect})
-
-      }else if(data.marital_status=="Divorced" && data.profession=="Unemployed"){
-                   this.maritalStatusselect = data.marital_status;
-                                             
-                   this.navCtrl.push(DivorseStepOnePage, {dataArray: this.dataArray,
-                       maritalStatusselect: this.maritalStatusselect,
-                           jobselect: this.profselect})
+    }else if(data.marital_status=="NeverMarried" && data.profession=="Business"){
+         this.maritalStatusselect = data.marital_status;
+      
+          this.navCtrl.push(BusinessStep1Page, {dataArray: this.dataArray,
+                                                maritalStatusselect: this.maritalStatusselect,
+                                                jobselect: this.profselect})
 
         }
+       /* this.api.emailOTP(formdata).subscribe(res => {
+          console.log(res)
+          if (res.flag == 3) {
+           // console.log('flag 3 true OTP SEND');
+          this.navCtrl.push(OtpPage, {dataStepFour: data, dataStepThree: this.dataStepThree,
+                                       dataStepTwo: this.dataStepTwo,dataStepOne: this.dataStepOne,
+                                        otp: res.otp});
+                                      }
+        });
+      */
+     
+      }
+      else {
+        console.log('form errr');
 
-          
-        
-        
-        else {
-          console.log('form errr');
-  
-          Object.keys(this.register.controls).forEach(field => {
-            const control = this.register.get(field);
-            control.markAsTouched({ onlySelf: true });
-          })
-        }
-         }
-    }
-  
-  
+        Object.keys(this.register.controls).forEach(field => {
+          const control = this.register.get(field);
+          control.markAsTouched({ onlySelf: true });
+        })
+      }
+       }
+  }
+
+
+
 

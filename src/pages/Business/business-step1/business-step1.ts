@@ -4,7 +4,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Base64 } from '@ionic-native/base64';
 import { Camera } from '@ionic-native/camera';
 import { File, FileEntry } from '@ionic-native/file';
-import { ActionSheetController, NavController, NavParams } from 'ionic-angular';
+import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
+import { ActionSheetController, AlertController, NavController, NavParams } from 'ionic-angular';
 import { SplashProvider } from '../../../providers/splash/splash';
 import { BusinessStep2Page } from '../business-step2/business-step2';
 
@@ -17,27 +18,20 @@ import { BusinessStep2Page } from '../business-step2/business-step2';
 export class BusinessStep1Page {
 
   businessForm: FormGroup;
-  otherpic1: any;
-  otherpic2: any;
-  otherpic3: any;
-  otherpic4: any;
+  photos: any=[];
   fileExtenstion: string;
   base64image: any;
   selfie: any;
   dataArray = {};
   constructor(public navCtrl: NavController, public navParams: NavParams,
+    public alertCtrl : AlertController,  private imagePicker: ImagePicker,
     public actionSheetCtrl: ActionSheetController,  public splash: SplashProvider,
     private base64: Base64, private camera: Camera, private file: File, private sanitizer: DomSanitizer,) {
 
       let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     this.businessForm = new FormGroup({
-      bussinesslogo : new FormControl(),
-     // otherpics: new FormControl('', [Validators.required]),
-    // selfie: new FormControl(),
-     otherpic1: new FormControl(),
-     otherpic2: new FormControl(),
-     otherpic3: new FormControl(),
-     otherpic4: new FormControl(),
+   
+      selfie: new FormControl(),
       company: new FormControl('', [Validators.required]),
       office_address: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)])
@@ -51,76 +45,116 @@ export class BusinessStep1Page {
     console.log('ionViewDidLoad JobDetailsPage');
   }
 
-  public getPhoto(side) {
-    let actionSheet = this.actionSheetCtrl.create({
-      buttons: [{
-        text: 'File Manager',
-        icon: 'folder-open',
-        cssClass: 'actionSheetButon',
-        handler: () => {
-          this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY, side);
-        }
-      },
-      {
-        text: 'Camera',
-        icon: 'camera',
-        cssClass: 'actionSheetButon',
-        handler: () => {
+  otherPhotos(){
 
-          this.takePicture(this.camera.PictureSourceType.CAMERA, side);
-        }
-      },]
-    });
-    actionSheet.present();
-  }
+    var options:ImagePickerOptions= {
+        maximumImagesCount:4,
+        width:100,
+        height:100,
+    }
+    this.imagePicker.getPictures(options).then((results) => {
+      for (var i = 0; i < results.length; i++) {
   
-  public takePicture(sourceType, side) {
-    // Create options for the Camera Dialog
-    var options = {
-      quality: 100,
-      sourceType: sourceType,
-      saveToPhotoAlbum: true,
-      correctOrientation: true,
-      DestinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-    };
-            this.camera.getPicture(options).then((imagePath) => {
-              this.file.resolveLocalFilesystemUrl(imagePath).then(fileInfo => {
-                let files = fileInfo as FileEntry;
-                files.file(() => {
-                  // this.fileName = success.name
-                  this.convertImageToBase64(imagePath, side);
-
-                });
-              }, err => {
-                console.log(err);
-                throw err;
-              });
-            });
-          }
+        let filename = results[i].substring(results[i].lastIndexOf('/')+1);
+        let path = results[i].substring(0,results[i].lastIndexOf('/')+1);
+        this.file.readAsDataURL(path,filename).then((base64string)=>{
+        this.photos.push(base64string)
+      //  this.photos.reverse();
+              })
+            }
           
-      private convertImageToBase64(base64: string, side) {
-        this.splash.presentLoading();
-        this.base64.encodeFile(base64).then((base64File: string) => {
+          }, err => {
+            console.log(err);
+            throw err;
+          });
+          console.log('Phtots Array: ' ,this.photos);
+  }
 
-          if (side == 'otherpic1') {
-            this.otherpic1 = this.sanitizer.bypassSecurityTrustResourceUrl(base64File);
+    deletePhoto(index){
+      let confirm = this.alertCtrl.create({
+        title: 'Sure you want to delete this photo?',
+        message: ' There is NO undo!',
+        buttons: [
+          {
+            text: 'No',
+            handler: () => {
+              console.log('Disagree clicked');
+            }
+          }, {
+            text: 'Yes',
+            handler: () => {
+              
+              this.photos.splice(index, 1);
+              console.log('Agree clicked',this.photos);
+            }
           }
-          if (side == 'otherpic2') {
-            this.otherpic2 = this.sanitizer.bypassSecurityTrustResourceUrl(base64File);
+        ]
+      });
+    confirm.present();
+
+  }
+
+    public getPhoto(side) {
+      let actionSheet = this.actionSheetCtrl.create({
+        buttons: [{
+          text: 'File Manager',
+          icon: 'folder-open',
+          cssClass: 'actionSheetButon',
+          handler: () => {
+            this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY, side);
           }
-          if (side == 'otherpic3') {
-            this.otherpic3 = this.sanitizer.bypassSecurityTrustResourceUrl(base64File);
+        },
+        {
+          text: 'Camera',
+          icon: 'camera',
+          cssClass: 'actionSheetButon',
+          handler: () => {
+
+            this.takePicture(this.camera.PictureSourceType.CAMERA, side);
           }
-          if (side == 'otherpic4') {
-            this.otherpic4 = this.sanitizer.bypassSecurityTrustResourceUrl(base64File);
-          }
-        
-        }, (err) => {
+        },]
+      });
+      actionSheet.present();
+    }
+
+    public takePicture(sourceType, side) {
+      // Create options for the Camera Dialog
+      var options = {
+        quality: 100,
+        sourceType: sourceType,
+        saveToPhotoAlbum: true,
+        correctOrientation: true,
+        DestinationType: this.camera.DestinationType.DATA_URL,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+      };
+      this.camera.getPicture(options).then((imagePath) => {
+        this.file.resolveLocalFilesystemUrl(imagePath).then(fileInfo => {
+          let files = fileInfo as FileEntry;
+          files.file(() => {
+            // this.fileName = success.name
+            this.convertImageToBase64(imagePath, side);
+
+          });
+        }, err => {
           console.log(err);
+          throw err;
         });
+      });
+    }
+
+      private convertImageToBase64(base64: string, side) {
+      this.splash.presentLoading();
+      this.base64.encodeFile(base64).then((base64File: string) => {
+      this.splash.dismiss();
+        if (side == 'selfie') {
+          this.selfie = this.sanitizer.bypassSecurityTrustResourceUrl(base64File);
+        }
+      }, (err) => {
+        console.log(err);
+      });
       }
+
       
   goBack() {
     this.navCtrl.pop()
@@ -130,15 +164,13 @@ export class BusinessStep1Page {
   submitDetails(data: any) {
     if (this.businessForm.valid) {
     
-       this.dataArray['bussinesslogo'] = data.bussinesslogo,
+      this.dataArray['photo'] = this.selfie.changingThisBreaksApplicationSecurity,
       this.dataArray['company'] = data.company,
       this.dataArray['office_address'] = data.office_address,
       this.dataArray['email'] = data.email,
-      this.dataArray['otherpic1'] = data.otherpic1,
-      this.dataArray['otherpic2'] = data.otherpic2,
-      this.dataArray['otherpic3'] = data.otherpic3,
-      this.dataArray['otherpic4'] = data.otherpic4
+      this.dataArray['otherpics'] = this.photos.changingThisBreaksApplicationSecurity,
    
+  
 
      console.log('---------------BusinessStep1-----------',this.dataArray)
 

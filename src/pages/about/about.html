@@ -13,14 +13,14 @@
     <div class="login-box">
 
         <ion-list class="login-user-info">
-          <button ion-button round center (click)="imgpicker()"> get img</button>
+          <button ion-button round center (click)="getPhoto()"> get img</button>
 
 
           <ion-row class="gender-box">
             <ion-col *ngFor="let img of photos; let id = index" col-4>
               <div class="document-img-box dotted-border" ><!-- (click)="imgpicker(img)"-->
                 <ion-icon name="md-close" (click)="deletePhoto(id)" ></ion-icon>
-                <img src="{{img}}"/>
+                <img [src]="img">
             </div>
             </ion-col>
          </ion-row>

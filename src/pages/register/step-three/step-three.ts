@@ -66,7 +66,8 @@ goBack() {
  
 Register_StepThree(data: any) {
   
-    if (this.register.valid) {
+    if (this.register.valid) {     
+   
 
         this.dataArray['dob'] = data.birthdate,
         this.dataArray['age'] = data.age,
