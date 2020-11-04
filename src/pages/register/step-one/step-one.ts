@@ -55,12 +55,12 @@ export class StepOnePage {
     this.register = new FormGroup({
     //  profilepic : new FormControl('', [Validators.required,]),
       selfie: new FormControl(),
-      firstname: new FormControl('', [Validators.required,]),
-      middlename: new FormControl('', [Validators.required,]),
-      lastname: new FormControl('', [Validators.required,]),
+      firstname: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z ]*'),Validators.maxLength(20),]),
+      middlename: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z ]*'),Validators.maxLength(20),]),
+      lastname: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z ]*'),Validators.maxLength(20),]),
       email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
       mobile1: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
-      mobile2: new FormControl(),
+      mobile2: new FormControl('', [Validators.minLength(10),Validators.maxLength(10)])
     
     });
   }
@@ -152,7 +152,7 @@ export class StepOnePage {
 
    
        if (this.register.valid) {
-        console.log('Selfi ----',this.selfie.changingThisBreaksApplicationSecurity);
+       // console.log('Selfi ----',this.selfie.changingThisBreaksApplicationSecurity);
      /*
                      this.dataArray = [{
               profile: data.selfie,
@@ -164,7 +164,8 @@ export class StepOnePage {
             }]
               */
   
-             this.dataArray['photo'] = this.selfie.changingThisBreaksApplicationSecurity,
+            this.dataArray['photo'] = this.selfie.changingThisBreaksApplicationSecurity,
+            //this.dataArray['photo'] = 'photo url',
              this.dataArray['firstname'] = data.firstname,
              this.dataArray['middlename'] = data.middlename,
              this.dataArray['lastname'] = data.lastname,

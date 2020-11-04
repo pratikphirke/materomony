@@ -50,23 +50,46 @@
               <ion-input type="text"  placeholder="First Name" formControlName="firstname" required></ion-input>
           </ion-item>
           <div no-lines
+          *ngIf="( register.get('firstname').hasError('maxlength') ||  register.get('firstname').hasError('minlength') 
+          || register.get('firstname').hasError('pattern') ||register.get('firstname').hasError('required') ) 
+          && register.get('firstname').touched">
+          <div class="error"
             *ngIf="register.get('firstname').hasError('required') && register.get('firstname').touched">
-          <div class="error">
-              First Name is required
+           *Required First Name
           </div>
-         </div>
+          <div class="error"
+            *ngIf="register.get('firstname').hasError('pattern') && register.get('firstname').touched">
+            Only alphabates please
+          </div>
+          <div class="error"
+          *ngIf="register.get('firstname').hasError('maxlength') && register.get('firstname').touched">
+          Maximum 20 letters 
+        </div>
+          </div>
+
         <ion-item>
           <ion-label>
               <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
           </ion-label>
               <ion-input type="text"  placeholder="Middle Name" formControlName="middlename" required></ion-input>
        </ion-item>
-          <div no-lines
-              *ngIf="register.get('middlename').hasError('required') && register.get('middlename').touched">
-          <div class="error">
-               Middle Name is required
-           </div>
-         </div>
+           <div no-lines
+          *ngIf="( register.get('middlename').hasError('maxlength') ||  register.get('middlename').hasError('minlength') 
+          || register.get('middlename').hasError('pattern') ||register.get('middlename').hasError('required') ) 
+          && register.get('middlename').touched">
+          <div class="error"
+            *ngIf="register.get('middlename').hasError('required') && register.get('middlename').touched">
+           *Required Middle Name
+          </div>
+          <div class="error"
+            *ngIf="register.get('middlename').hasError('pattern') && register.get('middlename').touched">
+            Only alphabates please
+          </div>
+          <div class="error"
+          *ngIf="register.get('middlename').hasError('maxlength') && register.get('middlename').touched">
+          Maximum 20 letters 
+        </div>
+          </div>
 
             <ion-item>
               <ion-label>
@@ -74,12 +97,24 @@
               </ion-label>
               <ion-input type="text"  placeholder="Last Name" formControlName="lastname" required></ion-input>
           </ion-item>
-              <div no-lines
-                *ngIf="register.get('lastname').hasError('required') && register.get('lastname').touched">
-           <div class="error">
-                Last Name is required
-           </div>
+          <div no-lines
+          *ngIf="( register.get('lastname').hasError('maxlength') ||  register.get('lastname').hasError('minlength') 
+          || register.get('lastname').hasError('pattern') ||register.get('lastname').hasError('required') ) 
+          && register.get('lastname').touched">
+          <div class="error"
+            *ngIf="register.get('lastname').hasError('required') && register.get('lastname').touched">
+           *Required last Name
+          </div>
+          <div class="error"
+            *ngIf="register.get('lastname').hasError('pattern') && register.get('lastname').touched">
+            Only alphabates please
+          </div>
+          <div class="error"
+          *ngIf="register.get('lastname').hasError('maxlength') && register.get('lastname').touched">
+          Maximum 20 letters 
         </div>
+          </div>
+          
               <ion-item>
                   <ion-label>
                       <ion-icon item-left name="mail"></ion-icon>
@@ -125,19 +160,17 @@
               </ion-label>
               <ion-input type="number" placeholder="Enter Mobile No2" formControlName="mobile2"></ion-input>
           </ion-item>
-<!--
           <div no-lines
-          *ngIf="( register.get('mobile2').hasError('minlength') || register.get('mobile2').hasError('pattern') ||register.get('mobile2').hasError('required') ) && register.get('mobile2').touched">
-          <div class="error"
-            *ngIf="register.get('mobile2').hasError('required') && register.get('mobile2').touched">
-            Please Enter Mobile NO2
-          </div>
+          *ngIf="( register.get('mobile2').hasError('maxlength') ||  register.get('mobile2').hasError('minlength') || register.get('mobile1').hasError('pattern') ||register.get('mobile1').hasError('required') ) && register.get('mobile1').touched">
           <div class="error"
             *ngIf="register.get('mobile2').hasError('minlength') && register.get('mobile2').touched">
-             Invalid Mobile NO2
+            Invalid Mobile NO2
           </div>
+          <div class="error"
+          *ngIf="register.get('mobile2').hasError('maxlength') && register.get('mobile2').touched">
+          Invalid Mobile NO2
         </div>
-   -->
+          </div>
             </ion-list>
            <!-- <ion-footer>
               <ion-toolbar>

@@ -28,71 +28,141 @@
               </div>
               </ion-col>
            </ion-row>
-              
-      <ion-item>
-        <ion-label>
-            <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
-        </ion-label>
-        <ion-input type="text"  placeholder="Father Name" formControlName="fathername" required></ion-input>
-      </ion-item>
-      <div no-lines
-            *ngIf="register.get('fathername').hasError('required') && register.get('fathername').touched">
-      <div class="error">
-        Father Name is required
-      </div>
-      </div>
+            
+           <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  placeholder="Father Name" formControlName="fathername" required></ion-input>
+          </ion-item>
+          <div no-lines
+            *ngIf="( register.get('fathername').hasError('maxlength') ||  register.get('fathername').hasError('minlength') 
+            || register.get('fathername').hasError('pattern') ||register.get('fathername').hasError('required') ) 
+            && register.get('fathername').touched">
+            <div class="error"
+              *ngIf="register.get('fathername').hasError('required') && register.get('fathername').touched">
+             *Required Father Name
+            </div>
+            <div class="error"
+              *ngIf="register.get('fathername').hasError('pattern') && register.get('fathername').touched">
+              Only alphabates please
+            </div>
+            <div class="error"
+            *ngIf="register.get('fathername').hasError('maxlength') && register.get('fathername').touched">
+            Maximum 20 letters 
+          </div>
+            </div>
+            
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+            </ion-label>
+            <ion-select interface="popover" placeholder="Father Occupation" formControlName="fatheroccupasion">
+                <ion-option value="business">Business</ion-option>
+                <ion-option value="privateJob">Private Job</ion-option>
+                <ion-option value="governmentjob">Government Job</ion-option>
+                <ion-option value="other">Other</ion-option>
+            </ion-select>
+          </ion-item>
+          <div no-lines *ngIf="register.get('fatheroccupasion').hasError('required') && register.get('fatheroccupasion').touched">
+          <div class="error">
+            Select Father Occupation
+          </div>
+          </div>
 
-        <ion-item>
-          <ion-label>
-              <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
-          </ion-label>
-          <ion-input type="number"  placeholder="Father Mobile No" formControlName="fathermobileno" required></ion-input>
-        </ion-item>
-        <div no-lines
-        *ngIf="( register.get('fathermobileno').hasError('minlength') || register.get('fathermobileno').hasError('pattern') ||register.get('fathermobileno').hasError('required') ) && register.get('fathermobileno').touched">
-        <div class="error"
-          *ngIf="register.get('fathermobileno').hasError('required') && register.get('fathermobileno').touched">
-          Please mobile no
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="number"  placeholder="Father Mobile No" formControlName="fathermobileno" required></ion-input>
+          </ion-item>
+          <div no-lines
+            *ngIf="( register.get('fathermobileno').hasError('maxlength') ||  register.get('fathermobileno').hasError('minlength') 
+            || register.get('fathermobileno').hasError('pattern') ||register.get('fathermobileno').hasError('required') ) 
+            && register.get('fathermobileno').touched">
+            <div class="error"
+              *ngIf="register.get('fathermobileno').hasError('required') && register.get('fathermobileno').touched">
+             *Required Father Mobile No
+            </div>
+            <div class="error"
+              *ngIf="register.get('fathermobileno').hasError('minlength') && register.get('fathermobileno').touched">
+              Invalid Father Mobile No
+            </div>
+            <div class="error"
+            *ngIf="register.get('fathermobileno').hasError('maxlength') && register.get('fathermobileno').touched">
+            Invalid Father Mobile No
+          </div>
+            </div>
+
+
+          <ion-item>
+            <ion-label>
+                <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  placeholder="Mother Name" formControlName="mothername" required></ion-input>
+          </ion-item>
+          <div no-lines
+          *ngIf="( register.get('mothername').hasError('maxlength') ||  register.get('mothername').hasError('minlength') 
+          || register.get('mothername').hasError('pattern') ||register.get('mothername').hasError('required') ) 
+          && register.get('mothername').touched">
+          <div class="error"
+            *ngIf="register.get('mothername').hasError('required') && register.get('mothername').touched">
+           *Required Mother Name
+          </div>
+          <div class="error"
+            *ngIf="register.get('mothername').hasError('pattern') && register.get('mothername').touched">
+            Only alphabates please
+          </div>
+          <div class="error"
+          *ngIf="register.get('mothername').hasError('maxlength') && register.get('mothername').touched">
+          Maximum 20 letters 
         </div>
-        <div class="error"
-          *ngIf="register.get('fathermobileno').hasError('pattern') && register.get('fathermobileno').touched">
-          mobile No invalid
-        </div>
-      </div>
-
-    <ion-item>
-      <ion-label>
-          <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
-      </ion-label>
-      <ion-select interface="popover" placeholder="Father Occupasion" formControlName="fatheroccupasion">
-          <ion-option value="PE">Private </ion-option>
-          <ion-option value="Bu">Bussiness</ion-option>
-          <ion-option value="O">Other</ion-option>
-      </ion-select>
-    </ion-item>
-    <div no-lines *ngIf="register.get('fatheroccupasion').hasError('required') && register.get('fatheroccupasion').touched">
-    <div class="error">
-      Select Father Occupasion
-    </div>
-    </div>
-
-    <ion-item>
-      <ion-label>
-          <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
-      </ion-label>
-      <ion-select interface="popover" placeholder="Mother Occupasion" formControlName="motheroccupasion">
-          <ion-option value="PE">Private </ion-option>
-          <ion-option value="Bu">Bussiness</ion-option>
-          <ion-option value="O">Other</ion-option>
-      </ion-select>
-    </ion-item>
-    <div no-lines *ngIf="register.get('motheroccupasion').hasError('required') && register.get('motheroccupasion').touched">
-    <div class="error">
-      Select Mother Occupasion
-    </div>
-    </div>
+          </div>
 
 
+            <ion-item>
+              <ion-label>
+                  <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+              </ion-label>
+              <ion-select interface="popover" placeholder="Mother Occupation" formControlName="mother_occupation">
+                <ion-option value="business">Business</ion-option>
+                <ion-option value="privateJob">Private Job</ion-option>
+                <ion-option value="governmentjob">Government Job</ion-option>
+                <ion-option value="houseWife">House Wife</ion-option>
+                <ion-option value="other">Other</ion-option>
+              </ion-select>
+            </ion-item>
+            <div no-lines *ngIf="register.get('mother_occupation').hasError('required') && register.get('mother_occupation').touched">
+            <div class="error">
+              Select Mother Occupation
+            </div>
+            </div>
+
+            <ion-item>
+              <ion-label>
+                  <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
+              </ion-label>
+              <ion-input type="number"  placeholder="Mother Mobile No" formControlName="mothermobileno" required></ion-input>
+            </ion-item>
+            <div no-lines
+            *ngIf="( register.get('mothermobileno').hasError('maxlength') ||  register.get('mothermobileno').hasError('minlength') 
+            || register.get('mothermobileno').hasError('pattern') ||register.get('mothermobileno').hasError('required') ) 
+            && register.get('mothermobileno').touched">
+            <div class="error"
+              *ngIf="register.get('mothermobileno').hasError('required') && register.get('mothermobileno').touched">
+             *Required Mother Mobile No
+            </div>
+            <div class="error"
+              *ngIf="register.get('mothermobileno').hasError('minlength') && register.get('mothermobileno').touched">
+              Invalid Mother Mobile No
+            </div>
+            <div class="error"
+            *ngIf="register.get('mothermobileno').hasError('maxlength') && register.get('mothermobileno').touched">
+            Invalid Mother Mobile No
+          </div>
+            </div>
+  
 
       </ion-list> 
       <ion-row>

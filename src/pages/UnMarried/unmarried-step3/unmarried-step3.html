@@ -14,20 +14,24 @@
 -->
         <form (ngSubmit)="Register_Step3(register.value)" [formGroup]="register">
           <ion-list class="login-user-info">
-              
+          
           <ion-item>
             <ion-label>
                 <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
             </ion-label>
+            <ion-input type="number"  placeholder="Height in cm" formControlName="height" required></ion-input>
+            <!--
             <ion-select interface="popover" placeholder="Height" formControlName="height">
-                <ion-option value="belowft">Below 4ft</ion-option>
-                <ion-option value="avrageft">Avrage 5-6ft</ion-option>
-                <ion-option value="aboveft">Above 6 fit</ion-option>
+                <ion-option value="below-122cm">Below - 122cm</ion-option>
+                <ion-option value="122cm-162cm">122cm - 162cm</ion-option>
+                <ion-option value="162cm-183cm">162cm - 183cm</ion-option>
+                <ion-option value="above-183cm">Above - 183cm</ion-option>
             </ion-select>
+            -->
           </ion-item>
           <div no-lines *ngIf="register.get('height').hasError('required') && register.get('height').touched">
           <div class="error">
-            Select  Height
+            Add Height in cm
           </div>
         </div>
 
@@ -36,15 +40,20 @@
             <ion-label>
                 <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
             </ion-label>
+            <ion-input type="number"  placeholder="Weight in kg" formControlName="weight" required></ion-input>
+            <!--
             <ion-select interface="popover" placeholder="Weight" formControlName="weight" required>
-                <ion-option value="belowft">Below 40kg</ion-option>
-                <ion-option value="avrageft">Avrage 40-70kg</ion-option>
-                <ion-option value="aboveft">Above 70kg</ion-option>
+                <ion-option value="belowft">Below - 40kg</ion-option>
+                <ion-option value="avrageft">40kg - 50kg</ion-option>
+                <ion-option value="avrageft">50kg - 60kg</ion-option>
+                <ion-option value="avrageft">60kg - 70kg</ion-option>
+                <ion-option value="aboveft">Above -  70kg</ion-option>
             </ion-select>
+            -->
           </ion-item>
           <div no-lines *ngIf="register.get('weight').hasError('required') && register.get('weight').touched">
           <div class="error">
-            Select Weight
+            Add  Weight in kg
           </div>
         </div>
 
@@ -54,9 +63,10 @@
                 <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
             </ion-label>
             <ion-select interface="popover" placeholder="Skin Tone" formControlName="skin" required>
-                <ion-option value="whiteskin">white</ion-option>
-                <ion-option value="avgskin">Average </ion-option>
-                <ion-option value="darkskin">Dark</ion-option>
+                <ion-option value="white_skin">white/fair</ion-option>
+                <ion-option value="lightbrown_skin"> light brown </ion-option>
+                <ion-option value="avragebrown_skin"> Avrage brown </ion-option>
+                <ion-option value="dark_skin">Dark</ion-option>
             </ion-select>
           </ion-item>
           <div no-lines *ngIf="register.get('skin').hasError('required') && register.get('skin').touched">

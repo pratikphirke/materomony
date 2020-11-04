@@ -14,7 +14,12 @@
                   </ion-label>
                   <ion-input type="text"  placeholder="Enter brothers Name" formControlName="name" required></ion-input>
                 </ion-item>
-    
+                <div no-lines *ngIf="brothersForm.get('name').hasError('required') && brothersForm.get('name').touched">
+                  <div class="error">
+                 *Required Brother Name
+                  </div>
+                </div>
+
                 <ion-item>
                   <ion-label>
                       <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
@@ -50,14 +55,55 @@
                     <ion-option value="Divorced">Divorced</ion-option>
                   </ion-select>
                 </ion-item>
-    
+                <div no-lines *ngIf="brothersForm.get('marital_status').hasError('required') && brothersForm.get('marital_status').touched">
+                  <div class="error">
+                 Select Brother Marital Status
+                  </div>
+                </div>
+                
+
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Brother Occupation" formControlName="brotheroccupasion">
+                      <ion-option value="business">Business</ion-option>
+                      <ion-option value="privateJob">Private Job</ion-option>
+                      <ion-option value="governmentjob">Government Job</ion-option>
+                      <ion-option value="other">Other</ion-option>
+                  </ion-select>
+                </ion-item>
+                <div no-lines *ngIf="brothersForm.get('brotheroccupasion').hasError('required') && brothersForm.get('brotheroccupasion').touched">
+                <div class="error">
+                  Select Brother Occupation
+                </div>
+                </div>
+      
+
                 <ion-item>
                   <ion-label>
                     <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
                   </ion-label>
                   <ion-input type="number" placeholder="Mobile Number" formControlName="mobile" required></ion-input>
                 </ion-item>
-                
+                <div no-lines
+                *ngIf="(brothersForm.get('mobile').hasError('maxlength') ||  brothersForm.get('mobile').hasError('minlength') 
+                || brothersForm.get('mobile').hasError('pattern') || brothersForm.get('mobile').hasError('required') ) 
+                && brothersForm.get('mobile').touched">
+                <div class="error"
+                  *ngIf="brothersForm.get('mobile').hasError('required') && brothersForm.get('mobile').touched">
+                 *Required brother Mobile No
+                </div>
+                <div class="error"
+                  *ngIf="brothersForm.get('mobile').hasError('minlength') && brothersForm.get('mobile').touched">
+                  Invalid brother Mobile No
+                </div>
+                <div class="error"
+                *ngIf="brothersForm.get('mobile').hasError('maxlength') && brothersForm.get('mobile').touched">
+                Invalid brother Mobile No
+              </div>
+                </div>
+
                 <span *ngIf="noOfBrothers > 1; else elseBlock">
                  
                   <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next(brothersForm.value)">Save & Next</button>
@@ -86,7 +132,13 @@
                   </ion-label>
                   <ion-input type="text"  placeholder="Enter 2nd brothers Name" formControlName="name" required></ion-input>
                 </ion-item>
-    
+                   <div no-lines *ngIf="brothersForm.get('name').hasError('required') && brothersForm.get('name').touched">
+                  <div class="error">
+                 *Required Brother Name
+                  </div>
+                </div>
+                
+
                 <ion-item>
                   <ion-label>
                       <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
@@ -124,14 +176,55 @@
                     <ion-option value="Divorced">Divorced</ion-option>
                   </ion-select>
                 </ion-item>
-    
+                <div no-lines *ngIf="brothersForm.get('marital_status').hasError('required') && brothersForm.get('marital_status').touched">
+                  <div class="error">
+                 Select Brother Marital Status
+                  </div>
+                </div>
+                
+
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Brother Occupation" formControlName="brotheroccupasion">
+                      <ion-option value="business">Business</ion-option>
+                      <ion-option value="privateJob">Private Job</ion-option>
+                      <ion-option value="governmentjob">Government Job</ion-option>
+                      <ion-option value="other">Other</ion-option>
+                  </ion-select>
+                </ion-item>
+                <div no-lines *ngIf="brothersForm.get('brotheroccupasion').hasError('required') && brothersForm.get('brotheroccupasion').touched">
+                <div class="error">
+                  Select Brother Occupation
+                </div>
+                </div>
+      
+
                 <ion-item>
                   <ion-label>
                     <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
                   </ion-label>
                   <ion-input type="number" placeholder="Mobile Number" formControlName="mobile" required></ion-input>
                 </ion-item>
-                
+                <div no-lines
+                *ngIf="(brothersForm.get('mobile').hasError('maxlength') ||  brothersForm.get('mobile').hasError('minlength') 
+                || brothersForm.get('mobile').hasError('pattern') || brothersForm.get('mobile').hasError('required') ) 
+                && brothersForm.get('mobile').touched">
+                <div class="error"
+                  *ngIf="brothersForm.get('mobile').hasError('required') && brothersForm.get('mobile').touched">
+                 *Required brother Mobile No
+                </div>
+                <div class="error"
+                  *ngIf="brothersForm.get('mobile').hasError('minlength') && brothersForm.get('mobile').touched">
+                  Invalid brother Mobile No
+                </div>
+                <div class="error"
+                *ngIf="brothersForm.get('mobile').hasError('maxlength') && brothersForm.get('mobile').touched">
+                Invalid brother Mobile No
+              </div>
+                </div>
+
               </ion-list>
               <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
               <span *ngIf="noOfBrothers > '2'; else elseBlock">
@@ -160,7 +253,12 @@
                   </ion-label>
                   <ion-input type="text"  placeholder="Enter 3rd brothers Name" formControlName="name" required></ion-input>
                 </ion-item>
-    
+                <div no-lines *ngIf="brothersForm.get('name').hasError('required') && brothersForm.get('name').touched">
+                  <div class="error">
+                 *Required Brother Name
+                  </div>
+                </div>
+                
                 <ion-item>
                   <ion-label>
                       <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
@@ -197,14 +295,55 @@
                     <ion-option value="Divorced">Divorced</ion-option>
                   </ion-select>
                 </ion-item>
-    
+              <div no-lines *ngIf="brothersForm.get('marital_status').hasError('required') && brothersForm.get('marital_status').touched">
+                  <div class="error">
+                 Select Brother Marital Status
+                  </div>
+                </div>
+                
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Brother Occupation" formControlName="brotheroccupasion">
+                      <ion-option value="business">Business</ion-option>
+                      <ion-option value="privateJob">Private Job</ion-option>
+                      <ion-option value="governmentjob">Government Job</ion-option>
+                      <ion-option value="other">Other</ion-option>
+                  </ion-select>
+                </ion-item>
+                <div no-lines *ngIf="brothersForm.get('brotheroccupasion').hasError('required') && brothersForm.get('brotheroccupasion').touched">
+                <div class="error">
+                  Select Brother Occupation
+                </div>
+                </div>
+      
+
+
                 <ion-item>
                   <ion-label>
                     <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
                   </ion-label>
                   <ion-input type="number" placeholder="Mobile Number" formControlName="mobile" required></ion-input>
                 </ion-item>
-                
+                   <div no-lines
+                *ngIf="(brothersForm.get('mobile').hasError('maxlength') ||  brothersForm.get('mobile').hasError('minlength') 
+                || brothersForm.get('mobile').hasError('pattern') || brothersForm.get('mobile').hasError('required') ) 
+                && brothersForm.get('mobile').touched">
+                <div class="error"
+                  *ngIf="brothersForm.get('mobile').hasError('required') && brothersForm.get('mobile').touched">
+                 *Required brother Mobile No
+                </div>
+                <div class="error"
+                  *ngIf="brothersForm.get('mobile').hasError('minlength') && brothersForm.get('mobile').touched">
+                  Invalid brother Mobile No
+                </div>
+                <div class="error"
+                *ngIf="brothersForm.get('mobile').hasError('maxlength') && brothersForm.get('mobile').touched">
+                Invalid brother Mobile No
+              </div>
+                </div>
+
               </ion-list>
               <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
               <span *ngIf="noOfBrothers > '3'; else elseBlock">
@@ -233,7 +372,12 @@
                   </ion-label>
                   <ion-input type="text"  placeholder="Enter 4th brothers Name" formControlName="name" required></ion-input>
                 </ion-item>
-    
+                <div no-lines *ngIf="brothersForm.get('name').hasError('required') && brothersForm.get('name').touched">
+                  <div class="error">
+                 *Required Brother Name
+                  </div>
+                </div>
+                
                 <ion-item>
                   <ion-label>
                       <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
@@ -269,14 +413,54 @@
                     <ion-option value="Divorced">Divorced</ion-option>
                   </ion-select>
                 </ion-item>
-    
+                <div no-lines *ngIf="brothersForm.get('marital_status').hasError('required') && brothersForm.get('marital_status').touched">
+                  <div class="error">
+                 Select Brother Marital Status
+                  </div>
+                </div>
+                
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Brother Occupation" formControlName="brotheroccupasion">
+                      <ion-option value="business">Business</ion-option>
+                      <ion-option value="privateJob">Private Job</ion-option>
+                      <ion-option value="governmentjob">Government Job</ion-option>
+                      <ion-option value="other">Other</ion-option>
+                  </ion-select>
+                </ion-item>
+                <div no-lines *ngIf="brothersForm.get('brotheroccupasion').hasError('required') && brothersForm.get('brotheroccupasion').touched">
+                <div class="error">
+                  Select Brother Occupation
+                </div>
+                </div>
+      
+
                 <ion-item>
                   <ion-label>
                     <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
                   </ion-label>
                   <ion-input type="number" placeholder="Mobile Number" formControlName="mobile" required></ion-input>
                 </ion-item>
-                
+                   <div no-lines
+                *ngIf="(brothersForm.get('mobile').hasError('maxlength') ||  brothersForm.get('mobile').hasError('minlength') 
+                || brothersForm.get('mobile').hasError('pattern') || brothersForm.get('mobile').hasError('required') ) 
+                && brothersForm.get('mobile').touched">
+                <div class="error"
+                  *ngIf="brothersForm.get('mobile').hasError('required') && brothersForm.get('mobile').touched">
+                 *Required brother Mobile No
+                </div>
+                <div class="error"
+                  *ngIf="brothersForm.get('mobile').hasError('minlength') && brothersForm.get('mobile').touched">
+                  Invalid brother Mobile No
+                </div>
+                <div class="error"
+                *ngIf="brothersForm.get('mobile').hasError('maxlength') && brothersForm.get('mobile').touched">
+                Invalid brother Mobile No
+              </div>
+                </div>
+
               </ion-list>
               <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
               <span *ngIf="noOfBrothers > '4'; else elseBlock">
@@ -305,7 +489,12 @@
                   </ion-label>
                   <ion-input type="text"  placeholder="Enter 5th brothers Name" formControlName="name" required></ion-input>
                 </ion-item>
-    
+                <div no-lines *ngIf="brothersForm.get('name').hasError('required') && brothersForm.get('name').touched">
+                  <div class="error">
+                 *Required Brother Name
+                  </div>
+                </div>
+                
                 <ion-item>
                   <ion-label>
                       <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
@@ -342,14 +531,55 @@
                     <ion-option value="Divorced">Divorced</ion-option>
                   </ion-select>
                 </ion-item>
-    
+                <div no-lines *ngIf="brothersForm.get('marital_status').hasError('required') && brothersForm.get('marital_status').touched">
+                  <div class="error">
+                 Select Brother Marital Status
+                  </div>
+                </div>
+                
+                <ion-item>
+                  <ion-label>
+                      <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
+                  </ion-label>
+                  <ion-select interface="popover" placeholder="Brother Occupation" formControlName="brotheroccupasion">
+                      <ion-option value="business">Business</ion-option>
+                      <ion-option value="privateJob">Private Job</ion-option>
+                      <ion-option value="governmentjob">Government Job</ion-option>
+                      <ion-option value="other">Other</ion-option>
+                  </ion-select>
+                </ion-item>
+                <div no-lines *ngIf="brothersForm.get('brotheroccupasion').hasError('required') && brothersForm.get('brotheroccupasion').touched">
+                <div class="error">
+                  Select Brother Occupation
+                </div>
+                </div>
+      
+
+
                 <ion-item>
                   <ion-label>
                     <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
                   </ion-label>
                   <ion-input type="number" placeholder="Mobile Number" formControlName="mobile" required></ion-input>
                 </ion-item>
-                
+                   <div no-lines
+                *ngIf="(brothersForm.get('mobile').hasError('maxlength') ||  brothersForm.get('mobile').hasError('minlength') 
+                || brothersForm.get('mobile').hasError('pattern') || brothersForm.get('mobile').hasError('required') ) 
+                && brothersForm.get('mobile').touched">
+                <div class="error"
+                  *ngIf="brothersForm.get('mobile').hasError('required') && brothersForm.get('mobile').touched">
+                 *Required brother Mobile No
+                </div>
+                <div class="error"
+                  *ngIf="brothersForm.get('mobile').hasError('minlength') && brothersForm.get('mobile').touched">
+                  Invalid brother Mobile No
+                </div>
+                <div class="error"
+                *ngIf="brothersForm.get('mobile').hasError('maxlength') && brothersForm.get('mobile').touched">
+                Invalid brother Mobile No
+              </div>
+                </div>
+
               </ion-list>
               <!-- <button ion-button round center class="login-btn" type="submit">Add</button> -->
               <span *ngIf="noOfBrothers > '5'; else elseBlock">

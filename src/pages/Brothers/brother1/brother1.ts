@@ -24,7 +24,8 @@ export class Brother1Page {
       birthdate: new FormControl(),
       age: new FormControl('', [Validators.required]),
       marital_status: new FormControl('', [Validators.required]),
-      mobile: new FormControl('', [Validators.required]),
+      brotheroccupasion: new FormControl('', [Validators.required]),
+      mobile: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
     });
   }
 

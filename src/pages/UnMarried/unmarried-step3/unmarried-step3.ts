@@ -6,6 +6,7 @@ import { ServiceProvider } from '../../../providers/service/service';
 import { SplashProvider } from '../../../providers/splash/splash';
 import { BusinessStep1Page } from '../../Business/business-step1/business-step1';
 import { JobDetailsPage } from '../../Job/job-details/job-details';
+import { TabsPage } from '../../tabs/tabs';
 
 //@IonicPage()
 @Component({
@@ -71,7 +72,12 @@ export class UnmarriedStep3Page {
           });
         
           }
-    
+          if(this.jobselect == "Unemployed"){
+            this.navCtrl.push(TabsPage, {dataArray: this.dataArray,
+              jobselect:this.jobselect
+                              });
+            }
+      
       }
       else {
         console.log('form errr');

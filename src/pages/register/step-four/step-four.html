@@ -41,11 +41,10 @@
           <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
         </ion-label>
         <ion-select interface="popover" placeholder="Annual Income" formControlName="annual_income">
-          <ion-option value="0-2lac">0-2lac</ion-option>
-          <ion-option value="02-04lac">2-4lac</ion-option>
-          <ion-option value="04-06lac">4-6lac</ion-option>
-          <ion-option value="06-08lac">6-8lac</ion-option>
-          <ion-option value="08-above">8-Above</ion-option>
+          <ion-option value="0-8lac">0-8lac</ion-option>
+          <ion-option value="8-10lac">8-10lac</ion-option>
+          <ion-option value="10-12lac">10-12lac</ion-option>
+          <ion-option value="12-above">12-Above</ion-option>
         </ion-select>
         </ion-item>
         <div no-lines *ngIf="register.get('annual_income').hasError('required') && register.get('annual_income').touched">
@@ -82,13 +81,13 @@
             </ion-label>
             <ion-select interface="popover" placeholder="Marital Status" formControlName="marital_status" required>
               
-                <ion-option value="UnMarried">UnMarried				
+                <ion-option value="Unmarried">UnMarried				
                 </ion-option>
                 <ion-option value="Divorced">Divorced or widowed
                 </ion-option>
                 <ion-option value="Married">Married				
                 </ion-option>
-                <ion-option value="NeverMarried">Never Married				
+                <ion-option value="Never_Married">Never Married				
                 </ion-option>
             </ion-select>
           </ion-item>
@@ -104,7 +103,7 @@
             </ion-label>
             <ion-select interface="popover" placeholder="Profession" formControlName="profession">
                 <ion-option value="Job">Job</ion-option>
-              <!--  <ion-option value="Unemployed">Unemployed</ion-option>-->
+              <ion-option value="Unemployed">Unemployed</ion-option>
                 <ion-option value="Business">Business</ion-option>
             </ion-select>
           </ion-item>

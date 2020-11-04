@@ -8,6 +8,7 @@ import { SplashProvider } from '../../../providers/splash/splash';
 import { BusinessStep1Page } from '../../Business/business-step1/business-step1';
 import { Children1Page } from '../../Childrens/children1/children1';
 import { JobDetailsPage } from '../../Job/job-details/job-details';
+import { TabsPage } from '../../tabs/tabs';
 
 
 //@IonicPage()
@@ -91,10 +92,11 @@ childrensArray = [];
         this.dataArray['height'] = data.height,
         this.dataArray['weight'] = data.weight,
         this.dataArray['skin'] = data.skin,
-        this.dataArray['totalChildrens'] = data.noofChildren.val,
+        this.dataArray['totalChildrens'] =  data.noofChildren.val,
         this.dataArray['childrens'] = this.childrensArray,
-        this.dataArray['about'] = data.about
-
+        this.dataArray['about'] = data.about,
+     
+        
 
 
         
@@ -111,7 +113,11 @@ childrensArray = [];
         this.navCtrl.push(JobDetailsPage, {dataArray: this.dataArray,
                                           jobselect:this.jobselect
                                       });
-                      
+     }
+        if(this.jobselect == "Unemployed"){
+          this.navCtrl.push(TabsPage, {dataArray: this.dataArray,
+            jobselect:this.jobselect
+                            });
           }
     
       }

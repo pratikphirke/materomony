@@ -28,7 +28,8 @@ export class Sister1Page {
       birthdate: new FormControl('', [Validators.required]),
       age: new FormControl('', [Validators.required]),
       marital_status: new FormControl('', [Validators.required]),
-      mobile: new FormControl('', [Validators.required]),
+      sisteroccupasion: new FormControl('', [Validators.required]),
+      mobile: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
     });
   }
 

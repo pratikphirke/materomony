@@ -164,12 +164,12 @@ export class BusinessStep1Page {
   submitDetails(data: any) {
     if (this.businessForm.valid) {
     
-      this.dataArray['photo'] = this.selfie.changingThisBreaksApplicationSecurity,
+      this.dataArray['business_logo'] = this.selfie.changingThisBreaksApplicationSecurity,
       this.dataArray['company'] = data.company,
       this.dataArray['office_address'] = data.office_address,
       this.dataArray['email'] = data.email,
-      this.dataArray['otherpics'] = this.photos.changingThisBreaksApplicationSecurity,
-   
+      this.dataArray['otherpics_business'] = this.photos.changingThisBreaksApplicationSecurity,
+
   
 
      console.log('---------------BusinessStep1-----------',this.dataArray)

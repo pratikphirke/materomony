@@ -55,27 +55,38 @@ export class JobDetailsPage {
         this.dataArray['currentSalary'] = data.currentSalary,
         this.dataArray['expectedSalary'] = data.expectedSalary
 
-
+     ////   let formdata = new FormData();
+      ///  formdata.append('data',this.dataArray);
       console.log('--------------Job data----------------- ',this.dataArray);
-     // this.navCtrl.push(TabsPage, {dataArray: this.dataArray});
+      //this.navCtrl.push(TabsPage, {dataArray: this.dataArray});
 
   
-       this.api.signupFinal(this.dataArray).subscribe(res => {
+           this.api.signupFinal(this.dataArray).subscribe(res => {
           
           console.log('SIGNUP RESPONSE',res)
           if(res.flag == 0) {
+            this.splash.toast(res.message)        
+          } else if(res.status == "true") {
+            this.splash.toast(res.message)
+            this.navCtrl.push(TabsPage, {dataArray: this.dataArray})
+          } else if(res.flag == 7) {
+            this.splash.toast('Registration failed')
+          }
+        });
+       /* 
+    if(res.flag == 0) {
             
             this.splash.toast(res.data);
             this.splash.dismiss();
           }
         
-          if(res.flag == 6) {
+          if(res.status == 'true') {
             this.splash.toast(res.message);
-          //  let formdata = new FormData();
-           // formdata.append('user_id', res.user_id);
+            let formdata = new FormData();
+            formdata.append('user_id', res.user_id);
 
-            this.navCtrl.push(TabsPage, {dataArray: this.dataArray});
-           /* this.api.getAccountDetails(this.dataArray).subscribe(res => {
+           // this.navCtrl.push(TabsPage, {dataArray: this.dataArray});
+            this.api.getAccountDetails(this.dataArray).subscribe(res => {
             
               console.log('**ACCOUNRTDETAILS',res)
               if(res.status == 'true') {  
@@ -83,12 +94,12 @@ export class JobDetailsPage {
                 this.splash.dismiss();
                  this.navCtrl.push(TabsPage, {dataArray: this.dataArray});
               }
-            })*/
+            })
           }
           if(res.flag == 7) {
             this.splash.toast('Registration Failed');
           }
-        });
+        });*/
       }
      
       

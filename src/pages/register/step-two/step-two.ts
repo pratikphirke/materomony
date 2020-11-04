@@ -97,8 +97,6 @@ export class StepTwoPage {
        );
         */ 
 
-
-
       this.dataArray['country'] = data.country.id,
       this.dataArray['state'] = data.state.id,
       this.dataArray['city'] = data.city.id,

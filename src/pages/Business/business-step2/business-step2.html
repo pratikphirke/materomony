@@ -22,17 +22,25 @@
                   </ion-label>
                   <ion-input type="number" placeholder="Mobile 1"  formControlName="mobile1"></ion-input>
               </ion-item>
+
               <div no-lines
-              *ngIf="( businessForm.get('mobile1').hasError('minlength') || businessForm.get('mobile1').hasError('pattern') ||businessForm.get('mobile1').hasError('required') ) && businessForm.get('mobile1').touched">
+              *ngIf="( businessForm.get('mobile1').hasError('maxlength') ||  businessForm.get('mobile1').hasError('minlength') 
+              || businessForm.get('mobile1').hasError('pattern') ||businessForm.get('mobile1').hasError('required') ) 
+              && businessForm.get('mobile1').touched">
               <div class="error"
                 *ngIf="businessForm.get('mobile1').hasError('required') && businessForm.get('mobile1').touched">
-                Please Enter Mobile NO1
+               *Required Mobile No1
               </div>
               <div class="error"
                 *ngIf="businessForm.get('mobile1').hasError('minlength') && businessForm.get('mobile1').touched">
-                Invalid Mobile NO1
+                Invalid  Mobile No1
               </div>
+              <div class="error"
+              *ngIf="businessForm.get('mobile1').hasError('maxlength') && businessForm.get('mobile1').touched">
+              Invalid  Mobile No1
+            </div>
               </div>
+
 
               <ion-item>
                 <ion-label>
@@ -40,17 +48,20 @@
                 </ion-label>
                 <ion-input type="number" placeholder="Mobile 2"  formControlName="mobile2"></ion-input>
               </ion-item> 
+           
               <div no-lines
-              *ngIf="( businessForm.get('mobile2').hasError('minlength') || businessForm.get('mobile2').hasError('pattern') ||businessForm.get('mobile2').hasError('required') ) && businessForm.get('mobile2').touched">
-              <div class="error"
-                *ngIf="businessForm.get('mobile2').hasError('required') && businessForm.get('mobile2').touched">
-                Please Enter Mobile NO2
-              </div>
+              *ngIf="( businessForm.get('mobile2').hasError('maxlength') ||  businessForm.get('mobile2').hasError('minlength') 
+              || businessForm.get('mobile2').hasError('pattern') ||businessForm.get('mobile2').hasError('required') ) 
+              && businessForm.get('mobile2').touched">
               <div class="error"
                 *ngIf="businessForm.get('mobile2').hasError('minlength') && businessForm.get('mobile2').touched">
-                 Invalid Mobile NO2
+                Invalid  Mobile No1
               </div>
+              <div class="error"
+              *ngIf="businessForm.get('mobile2').hasError('maxlength') && businessForm.get('mobile2').touched">
+              Invalid  Mobile No1
             </div>
+              </div>
 
               <ion-item>
                 <ion-label>
@@ -88,9 +99,22 @@
                     <ion-icon item-left ios="ios-transgender" md="md-transgender"></ion-icon>
                 </ion-label>
                 <ion-select interface="popover" placeholder="Products/Services"  formControlName="products">
-                    <ion-option value="less than 1 Year">Less than 1 year</ion-option>
-                    <ion-option value="1 year">1 Year</ion-option>
-                    <ion-option value="2 year">2 Year</ion-option>
+                    <ion-option value="Management">Management services</ion-option>
+                    <ion-option value="Software">Software services</ion-option>
+                    <ion-option value="Consulting">Consulting services</ion-option>
+                    <ion-option value="Training">Training Services</ion-option>
+                     <ion-option value="Financial">Financial services</ion-option>
+                     <ion-option value="Marketing">Marketing Services</ion-option>
+                     <ion-option value="Travel">Travel services</ion-option>
+                     <ion-option value="Catering/restaurant">Catering or restaurant services</ion-option>
+                     <ion-option value="Trading">Trading Services</ion-option>
+                     <ion-option value="Designing">Designing</ion-option>
+                     <ion-option value="Construction">Construction Services</ion-option>
+                     <ion-option value="WasteManagement">Waste Management Services</ion-option>
+                     <ion-option value="Security">Security Services</ion-option>
+                     <ion-option value="Manufacturing">Manufacturing services</ion-option>
+                     <ion-option value="SelfEmployed">Personal Services (Self employed)</ion-option>
+                    <ion-option value="other">Other</ion-option>
 
                 </ion-select>
               </ion-item>

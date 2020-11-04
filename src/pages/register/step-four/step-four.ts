@@ -7,6 +7,7 @@ import { SplashProvider } from '../../../providers/splash/splash';
 import { BusinessStep1Page } from '../../Business/business-step1/business-step1';
 import { DivorseStepOnePage } from '../../Divorse/divorse-step-one/divorse-step-one';
 import { JobDetailsPage } from '../../Job/job-details/job-details';
+import { TabsPage } from '../../tabs/tabs';
 import { UnmarriedStep1Page } from '../../UnMarried/unmarried-step1/unmarried-step1';
 //@IonicPage()
 @Component({
@@ -87,6 +88,7 @@ export class StepFourPage {
             
              this.listHobby.push(this.SelecteHobby);
             //  this.SelecteHobby="";
+            alert.dismiss();
               return false;
             }
           }
@@ -113,13 +115,13 @@ export class StepFourPage {
 
       //  this.navCtrl.push(StepFourPage, {dataArray: this.dataArray});
 
-     if(data.marital_status=="UnMarried"){
+     if(data.marital_status=="Unmarried"){
           this.profselect = data.profession;
         // console.log('SELECT STATUS',data.marital_status +'   SELECTED PROFESSION',this.profselect);
           this.navCtrl.push(UnmarriedStep1Page, {dataArray: this.dataArray,
                                                   jobselect: this.profselect});
 
-     }else if(data.marital_status=="Divorse"){
+     }else if(data.marital_status=="Divorced"){
            this.profselect = data.profession;
         
           this.navCtrl.push(DivorseStepOnePage, {dataArray: this.dataArray,
@@ -139,7 +141,29 @@ export class StepFourPage {
                                                 maritalStatusselect: this.maritalStatusselect,
                                                 jobselect: this.profselect})
 
-    }else if(data.marital_status=="NeverMarried" && data.profession=="Job"){
+    }else if(data.marital_status=="Married" && data.profession=="Unemployed"){
+        /* this.maritalStatusselect = data.marital_status;
+    
+         this.navCtrl.push(TabsPage, {dataArray: this.dataArray,
+          maritalStatusselect: this.maritalStatusselect,
+          jobselect: this.profselect})*/
+      this.api.signupFinal(this.dataArray).subscribe(res => {
+          
+        console.log('SIGNUP RESPONSE',res)
+        if(res.flag == 0) {
+          this.splash.toast(res.message)        
+        } else if(res.status == "true") {
+          this.splash.toast(res.message)
+         
+        this.navCtrl.push(TabsPage, {dataArray: this.dataArray,
+          maritalStatusselect: this.maritalStatusselect,
+          jobselect: this.profselect})
+        } else if(res.flag == 7) {
+          this.splash.toast('Registration failed')
+        }
+      });
+      
+    }else if(data.marital_status=="Never_Married" && data.profession=="Job"){
           this.maritalStatusselect = data.marital_status;
          
           this.navCtrl.push(JobDetailsPage, {dataArray: this.dataArray,
@@ -147,25 +171,37 @@ export class StepFourPage {
                                               jobselect: this.profselect})
 
 
-    }else if(data.marital_status=="NeverMarried" && data.profession=="Business"){
+    }else if(data.marital_status=="Never_Married" && data.profession=="Business"){
          this.maritalStatusselect = data.marital_status;
       
           this.navCtrl.push(BusinessStep1Page, {dataArray: this.dataArray,
                                                 maritalStatusselect: this.maritalStatusselect,
                                                 jobselect: this.profselect})
 
-        }
-       /* this.api.emailOTP(formdata).subscribe(res => {
-          console.log(res)
-          if (res.flag == 3) {
-           // console.log('flag 3 true OTP SEND');
-          this.navCtrl.push(OtpPage, {dataStepFour: data, dataStepThree: this.dataStepThree,
-                                       dataStepTwo: this.dataStepTwo,dataStepOne: this.dataStepOne,
-                                        otp: res.otp});
-                                      }
+
+
+    }else if(data.marital_status=="Never_Married" && data.profession=="Unemployed"){
+        /* this.maritalStatusselect = data.marital_status;
+         this.navCtrl.push(TabsPage, {dataArray: this.dataArray,
+          maritalStatusselect: this.maritalStatusselect,
+          jobselect: this.profselect})*/
+      this.api.signupFinal(this.dataArray).subscribe(res => {
+          
+          console.log('SIGNUP RESPONSE',res)
+          if(res.flag == 0) {
+            this.splash.toast(res.message)        
+          } else if(res.status == "true") {
+            this.splash.toast(res.message)
+           
+          this.navCtrl.push(TabsPage, {dataArray: this.dataArray,
+            maritalStatusselect: this.maritalStatusselect,
+            jobselect: this.profselect})
+          } else if(res.flag == 7) {
+            this.splash.toast('Registration failed')
+          }
         });
-      */
-     
+      } 
+  
       }
       else {
         console.log('form errr');

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { TabsPage } from '../pages/tabs/tabs';
 import { GlobleServiceProvider } from '../providers/globle-service/globle-service';
 import { LoginPage } from '../pages/login/login';
@@ -13,7 +12,7 @@ import { LoginPage } from '../pages/login/login';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  //rootPage:any = TabsPage; 
+  //rootPage:any = StepThreePage; 
   rootPage:any = LoginPage;
   user_id: string;
 // rootPage:any = SliderPage;
@@ -36,7 +35,7 @@ export class MyApp {
       }
       else {
         window.localStorage.clear();
-     //this.rootPage = TabsPage;
+   // this.rootPage = StepThreePage;
    this.rootPage = LoginPage;
       }
 

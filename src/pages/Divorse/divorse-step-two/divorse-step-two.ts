@@ -126,15 +126,16 @@ export class DivorseStepTwoPage {
 
     if (this.register.valid) {
 
-        this.dataArray['noofBrothers'] = data.noofBrothers.val,
+       // this.dataArray['no_of_brothers'] = this.selectedBro,
         this.dataArray['brothers'] = this.brothersArray,
-        this.dataArray['noofSister'] = data.noofSister.val,
+       // this.dataArray['no_of_sister'] = this.selectedSis,
+       this.dataArray['totalBrothers'] = data.noofBrothers.val,
+       this.dataArray['totalSisters'] = data.noofSister.val,
         this.dataArray['sisters'] = this.sistersArray,
         this.dataArray['manglik'] = data.manglik,
         this.dataArray['kuldevi'] = data.kuldevi,
-        this.dataArray['gotra'] = data.gotra
-  
-  
+        this.dataArray['gotra'] = data.gotra,
+
   
           console.log('---------------Divourse2-----------',this.dataArray)
   

@@ -147,8 +147,6 @@ export class UnmarriedStep2Page {
 
     if (this.register.valid) {
 
-       
-
 
       this.dataArray['totalBrothers'] = data.noofBrothers.val,
       this.dataArray['brothers'] = this.brothersArray,

@@ -51,10 +51,13 @@ export class UnmarriedStep1Page {
     this.register = new FormGroup({
       //profilepic : new FormControl('', [Validators.required,]),
       //selfie: new FormControl('', [Validators.required,]),
-      fathername: new FormControl('', [Validators.required,]),
-      fathermobileno: new FormControl('', [Validators.required,]),
+   //  [Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      fathername: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z ]*'),Validators.maxLength(20),]),
       fatheroccupasion: new FormControl('', [Validators.required,]),
-      motheroccupasion: new FormControl('', [Validators.required,])
+      fathermobileno: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
+      mothername: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z ]*'),Validators.maxLength(12),]),
+      motheroccupasion: new FormControl('', [Validators.required,]),
+      mothermobileno: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10)])
     
     });
   }
@@ -116,14 +119,17 @@ goBack() {
   Register_Step1(data: any) {
  
     if (this.register.valid) {
-    console.log('otherpic1 ----',this.photos.changingThisBreaksApplicationSecurity);
-    
-       this.dataArray['fathername'] = data.mothername,
-       this.dataArray['fatherMobileNo'] = data.fathermobileno,
-       this.dataArray['fatherOccupation'] = data.fatheroccupasion,
-       this.dataArray['motherOccupaion'] = data.motheroccupasion,
-       this.dataArray['otherpics'] = this.photos.changingThisBreaksApplicationSecurity,
+  //  console.log('otherpic1 ----',this.photos.changingThisBreaksApplicationSecurity);
 
+
+       this.dataArray['fathername'] = data.fathername,
+       this.dataArray['fatherOccupation'] = data.fatheroccupasion,
+       this.dataArray['fatherMobileNo'] = data.fathermobileno,
+     //  this.dataArray['mothername'] = data.mothername,
+       this.dataArray['motherOccupation'] = data.motheroccupasion,
+      // this.dataArray['motherMobileNo'] = data.mothermobileno,
+      // this.dataArray['otherpics'] = this.photos.changingThisBreaksApplicationSecurity,
+       this.dataArray['otherpics'] = this.photos.changingThisBreaksApplicationSecurity,
 
       console.log('---------------unmarried1-----------',this.dataArray)
 

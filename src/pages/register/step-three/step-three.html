@@ -1,9 +1,4 @@
-<!--<ion-header>
-  <ion-navbar>
-    <ion-title>Step Three</ion-title>
-  </ion-navbar>
-</ion-header>
--->
+
 <ion-content padding>
 
 
@@ -15,7 +10,7 @@
 -->
           <form (ngSubmit)="Register_StepThree(register.value)" [formGroup]="register">
           <ion-list class="login-user-info">
-         
+        
       <ion-item>
         <ion-label>
             <ion-icon item-left ios="ios-calendar" md="md-calendar"></ion-icon>
@@ -27,48 +22,41 @@
          formControlName="birthdate" displayFormat="DD-MM-YYYY"></ion-input>
       </ion-item>
       <div no-lines *ngIf="register.get('birthdate').hasError('required') && register.get('birthdate').touched">
-        <div class="error">
+        <div class="error" *ngIf="register.get('birthdate').hasError('required') && register.get('birthdate').touched">
           Select Your Birth Date
         </div>
+        <div class="error" *ngIf="register.get('age').hasError('required') && register.get('age').touched">
+        *Age Is Required
+      </div>
+      <div class="error" *ngIf="register.get('age').hasError('required') && register.get('age').touched">
+        *Age should be more than 18 years
+      </div>
       </div>
 
         <ion-item *ngIf="birthdate">
               <ion-label>
                 <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
               </ion-label>
-              <ion-input type="text" placeholder="Age" formControlName="age"
+              <ion-input type="number" placeholder="Age" formControlName="age"
               value="{{ageFromDateOfBirthday(birthdate)}}" readonly></ion-input>
         </ion-item>
-
-          
-
-           
-    <!--
-
-        <ion-label>
-            <ion-icon item-left ios="ios-person" md="md-person"></ion-icon>
-        </ion-label>
-        <ion-input type="text" placeholder="Age" formControlName="age" class="textbox-n" 
-        onfocus="(this.type='number')"  value="{{ageFromDateOfBirthday(birthdate)}}" readonly></ion-input>
-           
-
-          <ion-input type="number"placeholder="Age" formControlName="age"
-        onchange="this.className=(this.value!==''?'has-value':'')"
-        value="{{ageFromDateOfBirthday(birthdate)}}" readonly ></ion-input>
-
-        <span *ngIf="calAge== 0; else elseBlock">           
-          <ion-input type="number" placeholder="Age" formControlName="age"  readonly ></ion-input>
-        </span>
-        <ng-template #elseBlock>
-          <ion-input type="number" placeholder="Age" formControlName="age"
-                value="{{ageFromDateOfBirthday(birthdate)}}"  readonly ></ion-input>
-        </ng-template>
-  -->
-         
-
-
-
- 
+        <div *ngIf="invalidAgeMsg != 'undefined'" >
+          <div class="error">{{invalidAgeMsg}}</div>
+        </div>
+  
+<!--
+            <div no-lines
+            *ngIf="(register.get('age').errors?.age || register.get('age').hasError('required') ) && register.get('age').touched">
+            <div class="error"
+              *ngIf="register.get('age').hasError('required') && register.get('age').touched">
+              *Age Is Required
+            </div>
+            <div class="error" *ngIf="register.get('age').errors?.age && register.get('age').touched">
+              *Age should be more than 18 years
+            </div>
+          </div>
+-->
+  
 
       <ion-item>
         <ion-label>

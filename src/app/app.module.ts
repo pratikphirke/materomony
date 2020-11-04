@@ -78,13 +78,14 @@ import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { ValidatorProvider } from '../providers/validator/validator';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     AboutPage,
     ContactPage,
-
+/*
   PeoplePage,
    SettingsPage,
     LoginPage,
@@ -119,7 +120,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
     BusinessStep2Page,
     BusinessStep3Page,
     OtpPage,
-    SliderPage,
+    SliderPage,*/
     TabsPage
     // SwipeTabDirective,
   ],
@@ -187,6 +188,9 @@ import { ImagePicker } from '@ionic-native/image-picker';
     ScreenOrientation,
     UrlProvider,
     LangServiceProvider,
+    ValidatorProvider,
+    ValidatorProvider,
+    ValidatorProvider,
   ]
 })
 export class AppModule {}

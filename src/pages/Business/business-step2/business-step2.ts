@@ -17,8 +17,8 @@ export class BusinessStep2Page {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.businessForm = new FormGroup({
       
-      mobile1: new FormControl('', [Validators.required]),
-      mobile2: new FormControl('', [Validators.required]),
+      mobile1: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
+      mobile2: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
       gstin: new FormControl('', [Validators.required]),
       businessType: new FormControl('', [Validators.required]),
       products: new FormControl('', [Validators.required]),

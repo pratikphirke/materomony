@@ -43,13 +43,14 @@ export class DivorseStepOnePage {
   ngOnInit() {
 
     this.register = new FormGroup({
-     // profilepic : new FormControl('', [Validators.required,]),
-     // otherpics: new FormControl('', [Validators.required,]),
-    
-     fathername: new FormControl('', [Validators.required,]),
-      fathermobileno: new FormControl('', [Validators.required,]),
+ 
+
+      fathername: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z ]*'),Validators.maxLength(20),]),
       fatheroccupasion: new FormControl('', [Validators.required,]),
-      motheroccupasion: new FormControl('', [Validators.required,])
+      fathermobileno: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
+      mothername: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z ]*'),Validators.maxLength(12),]),
+      mother_occupation: new FormControl('', [Validators.required,]),
+      mothermobileno: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10)])
     
     });
   }
@@ -113,10 +114,15 @@ goBack() {
 
     if (this.register.valid) {
 
-        this.dataArray['fatherName'] = data.fathername,
+    
+
+        this.dataArray['fathername'] = data.fathername,
         this.dataArray['fatherMobileNo'] = data.fathermobileno,
         this.dataArray['fatherOccupation'] = data.fatheroccupasion,
-        this.dataArray['motherOccupation'] = data.motheroccupasion,
+        
+        //this.dataArray['motherName'] = data.mothername,
+        //this.dataArray['motherMobileNo'] = data.mothermobileno,
+        this.dataArray['motherOccupation'] = data.mother_occupation,
         this.dataArray['otherpics'] = this.photos.changingThisBreaksApplicationSecurity,
 
  
